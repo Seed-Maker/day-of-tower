@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "마수 카라크",
+  "monsterType": "용",
+  "explain": "예로부터 전해져 오는 전설의 마수라고 한다. 검은 몸체에 6개의 머리는 위압을 주기에는 충분한 모습이다. 매우 흉폭하니 조심해야 한다.",
+  "hp": 45,
+  "atk": 40,
+  "cost": 0,
+  "isEffectExist": true,
+  "rare": "U"
+}

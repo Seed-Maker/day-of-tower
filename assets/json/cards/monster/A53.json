@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "트로이 목마",
+  "monsterType": "기계",
+  "explain": "적을 교란시켜 뒤에서 공격하기에 용이한 탈것이다.",
+  "hp": 13,
+  "atk": 8,
+  "cost": 34,
+  "isEffectExist": true,
+  "rare": "E"
+}

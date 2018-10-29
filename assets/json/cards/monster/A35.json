@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "드롭킥 전사",
+  "monsterType": "사람",
+  "explain": "드롭킥을 날리는 전사이다.단련된 다리는 매우 단단하다고 한다.",
+  "hp": 3,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": true,
+  "rare": "C"
+}

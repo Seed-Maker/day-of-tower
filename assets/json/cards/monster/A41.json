@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "베이비 슬라임",
+  "monsterType": "슬라임",
+  "explain": "굉장히 크기가 작은 슬라임",
+  "hp": 1,
+  "atk": 1,
+  "cost": 1,
+  "isEffectExist": false,
+  "rare": "C"
+}

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "피곤한 코볼트",
+  "monsterType": "짐승",
+  "explain": "피곤해보이는 코볼트이다.",
+  "hp": 1,
+  "atk": 3,
+  "cost": 4,
+  "isEffectExist": true,
+  "rare": "C"
+}

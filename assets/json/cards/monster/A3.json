@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "리더 늑대",
+  "monsterType": "짐승",
+  "explain": "늑대들의 리더이다.",
+  "hp": 2,
+  "atk": 2,
+  "cost": 4,
+  "isEffectExist": true,
+  "rare": "R"
+}

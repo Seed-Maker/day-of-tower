@@ -1,0 +1,58 @@
+#main-display {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('./assets/image/main/tile.png');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  color: white;
+  will-change: top;
+}
+
+#main-display.open {
+  animation: main-display-open .5s ease-out;
+  animation-fill-mode: forwards;
+}
+
+#main-display.close {
+  animation: main-display-close .5s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes main-display-open {
+  0% {
+    top: 100vh;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes main-display-close {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100vh;
+  }
+}
+
+#main-display-logo {
+  width: 80%;
+  max-width: 550px;
+  margin: 1rem auto;
+}
+
+#main-display-icons {
+  text-align: center;
+}
+
+#main-display-icons img {
+  display: inline-block;
+  max-width: 75px;
+  margin: .5rem;
+  border-radius: .5rem;
+}

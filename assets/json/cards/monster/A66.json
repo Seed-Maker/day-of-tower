@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "바람의 정령",
+  "monsterType": "정령",
+  "explain": "바람을 다루는 정령이다.시원하다고 한다.",
+  "hp": 2,
+  "atk": 2,
+  "cost": 4,
+  "isEffectExist": false,
+  "rare": "C"
+}

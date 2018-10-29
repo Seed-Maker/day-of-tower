@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "섬광의 기사",
+  "monsterType": "사람",
+  "explain": "섬광처럼 빠른 속도로 적을 벤다고 한다.",
+  "hp": 3,
+  "atk": 4,
+  "cost": 4,
+  "isEffectExist": false,
+  "rare": "C"
+}

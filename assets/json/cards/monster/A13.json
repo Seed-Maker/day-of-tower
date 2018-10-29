@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "암흑의 사제",
+  "monsterType": "사람",
+  "explain": "타락한 사제이다.암흑 마법을 사용해 고통스럽게 한다.",
+  "hp": 2,
+  "atk": 4,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

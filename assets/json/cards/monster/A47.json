@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "태양의 신'야루'",
+  "monsterType": "신",
+  "explain": "전설에서 전해져 내려오는 태양신이다.빛으로 가득싼 그의 모습은 인간의 눈으로는 감히 볼 수 없다고 전해진다.",
+  "hp": 18,
+  "atk": 17,
+  "cost": 60,
+  "isEffectExist": true,
+  "rare": "U"
+}

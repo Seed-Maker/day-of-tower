@@ -1,0 +1,43 @@
+#loading-alert {
+  display: none;
+}
+
+#loading-wrapper {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #f0f0f0;
+}
+
+#loading-wrapper h2 {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+#loading-spinner {
+  border: 1rem solid #323232;
+  width: 5rem;
+  height: 5rem;
+  margin: 5rem auto;
+  border-radius: 100vh;
+  border-left-color: rgba(0,0,0,0);
+  animation: loading-spin 1s linear infinite;
+}
+
+@keyframes loading-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loading-bar {
+  display: block;
+  width: 90%;
+  max-width: 650px;
+  height: 2rem;
+  margin: auto;
+  border-radius: .75rem;
+}

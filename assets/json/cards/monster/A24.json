@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "시간의 드래곤",
+  "monsterType": "용",
+  "explain": "시간 속에서 태어난 드래곤,시간을 조종한다",
+  "hp": 4,
+  "atk": 4,
+  "cost": 7,
+  "isEffectExist": true,
+  "rare": "E"
+}

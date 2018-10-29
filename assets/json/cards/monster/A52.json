@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "기생충",
+  "monsterType": "벌레",
+  "explain": "다른 벌레의 몸에 들어가 그 벌레를 조종하는 무서운 기생충이다.",
+  "hp": 1,
+  "atk": 1,
+  "cost": 3,
+  "isEffectExist": true,
+  "rare": "R"
+}

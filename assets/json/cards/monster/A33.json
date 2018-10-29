@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "온천의 유령녀",
+  "monsterType": "사람",
+  "explain": "지박령으로 온천에 놀러오는 사람들과 잘 어울린다고 한다.",
+  "hp": 1,
+  "atk": 0,
+  "cost": 2,
+  "isEffectExist": true,
+  "rare": "C"
+}

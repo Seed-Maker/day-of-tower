@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "질투의 사제 엔비",
+  "monsterType": "사람",
+  "explain": "매번 남을 시기하고 있다고 한다.",
+  "hp": 4,
+  "atk": 3,
+  "cost": 15,
+  "isEffectExist": true,
+  "rare": "R"
+}

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "절름발이 늑대",
+  "monsterType": "짐승",
+  "explain": "이빨이 매우 날카롭다.",
+  "hp": 1,
+  "atk": 2,
+  "cost": 2,
+  "isEffectExist": false,
+  "rare": "C"
+}

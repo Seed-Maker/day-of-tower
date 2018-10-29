@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "정령왕",
+  "monsterType": "정령",
+  "explain": "모든 정령을 다룬다. 인간 세계에 간섭하는 것을 좋아하지 않는다.",
+  "hp": 13,
+  "atk": 15,
+  "cost": 25,
+  "isEffectExist": true,
+  "rare": "E"
+}

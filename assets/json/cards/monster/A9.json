@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "오크 족장",
+  "monsterType": "짐승",
+  "explain": "모든 오크를 이끄는 족장이다.",
+  "hp": 8,
+  "atk": 6,
+  "cost": 10,
+  "isEffectExist": true,
+  "rare": "E"
+}

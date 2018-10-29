@@ -1,0 +1,57 @@
+#say,
+#prompt,
+#confirm {
+  z-index: 9;
+  position: fixed;
+  left: -100vw;
+  bottom: 0;
+  width: calc(80vw - 2rem);
+  max-width: 450px;
+  min-height: 3rem;
+  padding: 1rem;
+  border-top: .5rem #8a8a8a solid;
+  border-radius: 1rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: white;
+}
+
+#say {
+  cursor: pointer;
+  padding: 2rem;
+}
+
+#say.open,
+#prompt.open,
+#confirm.open {
+  animation: say-open 0.25s;
+  animation-fill-mode: both;
+}
+
+#say.close,
+#prompt.close,
+#confirm.close {
+  animation: say-close 0.25s;
+  animation-fill-mode: both;
+}
+
+@keyframes say-open {
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes say-close {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100vw;
+  }
+}
+
+.card {
+  width: 25vw;
+  max-width: 150px;
+  height: auto;
+}

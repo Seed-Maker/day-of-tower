@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "작은 쥐 모형 장난감",
+  "monsterType": "기계",
+  "explain": "고양이에게 주면 즐거워하는 장난감이다.",
+  "hp": 1,
+  "atk": 1,
+  "cost": 1,
+  "isEffectExist": false,
+  "rare": "C"
+}

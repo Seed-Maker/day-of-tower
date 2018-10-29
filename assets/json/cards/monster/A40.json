@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "퀸 슬라임",
+  "monsterType": "슬라임",
+  "explain": "거대한 슬라임들의 여왕이다.사실 슬라임에는 성별이 존재하지 않지만 어째서인지 여왕으로 불리고 있다.",
+  "hp": 10,
+  "atk": 2,
+  "cost": 15,
+  "isEffectExist": true,
+  "rare": "R"
+}

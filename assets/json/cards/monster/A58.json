@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "여기사 단장'티라미수'",
+  "monsterType": "사람",
+  "explain": "여기사단을 이끄는 단장이다.항상 모범적이며 앞에 나선다고 한다.",
+  "hp": 18,
+  "atk": 22,
+  "cost": 40,
+  "isEffectExist": true,
+  "rare": "E"
+}

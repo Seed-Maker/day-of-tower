@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "세뇌사'유마론'",
+  "monsterType": "사람",
+  "explain": "엄청난 실력으로 상대를 세뇌시킨다.",
+  "hp": 3,
+  "atk": 3,
+  "cost": 6,
+  "isEffectExist": true,
+  "rare": "E"
+}

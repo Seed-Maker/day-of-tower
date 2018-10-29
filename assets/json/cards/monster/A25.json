@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "용의 알",
+  "monsterType": "용",
+  "explain": "용의 알이다...단단하다..?",
+  "hp": 5,
+  "atk": 0,
+  "cost": 7,
+  "isEffectExist": true,
+  "rare": "C"
+}

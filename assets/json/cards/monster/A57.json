@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "여기사'카넬레'",
+  "monsterType": "사람",
+  "explain": "여기사단 4인방 중 한 명인 카넬레이다.협상의 달인이라고 한다.",
+  "hp": 4,
+  "atk": 6,
+  "cost": 9,
+  "isEffectExist": false,
+  "rare": "R"
+}

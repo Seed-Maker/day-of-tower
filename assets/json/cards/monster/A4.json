@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "리더 늑대",
+  "monsterType": "짐승",
+  "explain": "구워먹으면 맛있는 녀석이다.",
+  "hp": 3,
+  "atk": 1,
+  "cost": 2,
+  "isEffectExist": false,
+  "rare": "C"
+}

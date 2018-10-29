@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "오크 돌격병",
+  "monsterType": "짐승",
+  "explain": "돌격해서 상대를 친다.",
+  "hp": 6,
+  "atk": 2,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

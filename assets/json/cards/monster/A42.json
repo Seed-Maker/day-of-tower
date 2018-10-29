@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "바람의 기사단",
+  "monsterType": "사람",
+  "explain": "바람을 다루는 기사단이라고 한다.갑옷이 매우 예쁘다.",
+  "hp": 5,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

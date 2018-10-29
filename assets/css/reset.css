@@ -1,0 +1,35 @@
+html {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+head {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+p {
+  margin: .5rem auto;
+  padding: .5rem;
+}
+
+img,
+canvas,
+iframe {
+  display: block;
+  width: 100%;
+}
+
+a {
+  color: #446bf6;
+}
+
+a[onclick] {
+  cursor: pointer;
+  text-decoration: underline;
+}

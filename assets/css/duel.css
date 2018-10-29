@@ -1,0 +1,295 @@
+#game-start-logo {
+  display: none;
+  position: fixed;
+  width: 60vw;
+  max-width: 450px;
+  left: 20vw;
+  top: 35vh;
+  will-change: left, width;
+}
+
+#game-start-logo.open {
+  z-index: 15;
+  display: block;
+  animation: game-start-logo-open 2.5s;
+}
+
+#game-start-logo.open,
+#game-start-display-wrapper.open {
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0, 1.12, 0.93, 0.28);
+}
+
+@keyframes game-start-logo-open {
+  0% {
+    left: -130vw;
+    width: 35vw;
+  }
+  100% {
+    left: 100vw;
+    width: 85vw;
+  }
+}
+
+#game-start-display-wrapper {
+  z-index: 3;
+  display: none;
+  position: fixed;
+  bottom: -100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  will-change: bottom;
+  animation-fill-mode: forwards !important;
+  background: url("../assets/image/duel/background.png");
+  background-size: cover;
+}
+
+#game-start-display-wrapper.open {
+  display: block;
+  animation: game-start-display-wrapper-open 2.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes game-start-display-wrapper-open {
+  100% {
+    bottom: 0;
+  }
+}
+
+#in-game-menu {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: .5rem 0;
+  background: #323232;
+  color: white;
+}
+
+#in-game-menu-wrapper {
+  display: grid;
+  width: 90vw;
+  max-width: 550px;
+  margin: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1px;
+  background: white;
+}
+
+#in-game-menu-wrapper > div {
+  cursor: pointer;
+  background: #323232;
+}
+
+#in-game-menu-wrapper > div > p {
+  text-align: center;
+  padding: 0;
+  margin: .5rem;
+}
+
+#duel,
+#player-info {
+  width: 100vw;
+  height: 100vh;
+}
+
+#player-info {
+  position: absolute;
+  width: 450px;
+  top: 0;
+  left: -200vw;
+  border-right: .25rem solid #323232;
+  background: rgba(85, 85, 85, 0.7);
+  color: white;
+  animation-fill-mode: forwards !important;
+}
+
+@media (max-width: 650px) {
+  #player-info {
+    width: 100vw;
+  }
+}
+
+#player-info.open {
+  animation: player-info-open .5s;
+}
+
+#player-info.close {
+  animation: player-info-close .5s;
+}
+
+@keyframes player-info-open {
+  0% {
+    left: -120vw;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes player-info-close {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -120vw;
+  }
+}
+
+#player-info-close-btn {
+  max-width: 250px;
+  margin: 45vh auto 0 auto;
+}
+
+#enemy-info,
+#user-info {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 1rem;
+  background: #323232;
+}
+
+#enemy-info {
+  top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#user-info {
+  bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#user-profile-image,
+#enemy-profile-image {
+  vertical-align: middle;
+  display: inline-block;
+  width: 45vw;
+  max-width: 200px;
+  border: 1px solid #dcdcdc;
+  margin: 2.5vh;
+  border-radius: 1rem;
+  background: white;
+}
+
+#enemy-name,
+#user-name {
+  vertical-align: middle;
+  display: inline-block;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+#user-dice,
+#enemy-dice {
+  z-index: 18;
+  position: fixed;
+  left: 50px;
+  width: 160px;
+  height: 160px;
+  perspective: 650px;
+  animation-fill-mode: forwards !important;
+  will-change: bottom, top;
+}
+
+#user-dice {
+  cursor: pointer;
+  bottom: -200px;
+}
+
+#enemy-dice {
+  top: -200px;
+}
+
+#user-dice.open {
+  animation: user-dice-open .5s;
+}
+
+#enemy-dice.open {
+  animation: enemy-dice-open .25s;
+}
+
+@keyframes user-dice-open {
+  100% {
+    bottom: 50px;
+  }
+}
+
+@keyframes enemy-dice-open {
+  100% {
+    top: 50px;
+  }
+}
+
+#user-dice.hide {
+  animation: user-dice-hide .5s;
+}
+
+#enemy-dice.hide {
+  animation: enemy-dice-hide .5s;
+}
+
+@keyframes user-dice-hide {
+  0% {
+    bottom: 50px;
+  }
+  100% {
+    bottom: -300px;
+  }
+}
+
+@keyframes enemy-dice-hide {
+  0% {
+    top: 50px;
+  }
+  100% {
+    top: -300px;
+  }
+}
+
+.dice-wrapper {
+  transition: transform 1s;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.dice-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 2rem;
+  border: 5px solid #323232;
+}
+
+.dice-face.f1 {
+  transform: rotateY(0deg) translateZ(80px);
+  background: url('../assets/image/duel/dice_face_1.png');
+}
+.dice-face.f2 {
+  transform: rotateY(90deg) translateZ(80px);
+  background: url('../assets/image/duel/dice_face_2.png');
+}
+.dice-face.f3 {
+  transform: rotateX(-90deg) translateZ(80px);
+  background: url('../assets/image/duel/dice_face_3.png');
+}
+.dice-face.f4 {
+  transform: rotateX(90deg) translateZ(80px);
+  background: url('../assets/image/duel/dice_face_4.png');
+}
+.dice-face.f5 {
+  transform: rotateY(-90deg) translateZ(80px);
+  background: url('../assets/image/duel/dice_face_5.png');
+}
+.dice-face.f6 {
+  transform: rotateY(180deg) translateZ(80px);
+  background: url('../assets/image/duel/dice_face_6.png');
+}

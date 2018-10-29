@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "동장군",
+  "monsterType": "사람",
+  "explain": "단단하고 예리한 칼날을 갈며 추위 속에 숨어 사는 장군.",
+  "hp": 5,
+  "atk": 5,
+  "cost": 6,
+  "isEffectExist": false,
+  "rare": "C"
+}

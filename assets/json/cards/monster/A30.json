@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "식충식물 네펜데스",
+  "monsterType": "식물",
+  "explain": "식물 왕국을 위협하는 생물이다.가까이 가면 잡아먹힐지도 모른다.",
+  "hp": 2,
+  "atk": 5,
+  "cost": 6,
+  "isEffectExist": true,
+  "rare": "R"
+}

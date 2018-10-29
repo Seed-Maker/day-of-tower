@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "킹 슬라임",
+  "monsterType": "슬라임",
+  "explain": "거대한 슬라임들의 왕이다.하지만 다른 슬라임들은 왕의 존재조차 모른다고 한다.",
+  "hp": 10,
+  "atk": 2,
+  "cost": 15,
+  "isEffectExist": true,
+  "rare": "R"
+}

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "철퇴의 무법자",
+  "monsterType": "사람",
+  "explain": "무거운 철퇴로 상대를 내려친다.",
+  "hp": 3,
+  "atk": 4,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

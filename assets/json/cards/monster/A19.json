@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "미끌미끌 슬라임",
+  "monsterType": "슬라임",
+  "explain": "귀여운 슬라임이다.",
+  "hp": 1,
+  "atk": 1,
+  "cost": 1,
+  "isEffectExist": false,
+  "rare": "C"
+}

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "플레임 드래건",
+  "monsterType": "용",
+  "explain": "입에서 불을 뿜으며 날아다니는 용이다.",
+  "hp": 5,
+  "atk": 5,
+  "cost": 6,
+  "isEffectExist": false,
+  "rare": "R"
+}

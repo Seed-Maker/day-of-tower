@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "크라이머",
+  "monsterType": "사람",
+  "explain": "계속해서 우는 자이다.가까이 있으면 눈물 소리가 난다.",
+  "hp": 6,
+  "atk": 4,
+  "cost": 7,
+  "isEffectExist": false,
+  "rare": "R"
+}

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "하늘의 신'라'",
+  "monsterType": "신",
+  "explain": "드넓은 하늘과 가장 가깝다 여기는 신.그의 날개짓에 태풍이 일어난다고 한다.",
+  "hp": 19,
+  "atk": 11,
+  "cost": 60,
+  "isEffectExist": true,
+  "rare": "U"
+}

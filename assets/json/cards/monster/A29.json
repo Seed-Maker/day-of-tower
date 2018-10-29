@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "꿀벌 기사",
+  "monsterType": "벌레",
+  "explain": "꿀을 지키는 식물 왕국의 기사이다.매우 용맹하다고 한다.",
+  "hp": 3,
+  "atk": 3,
+  "cost": 4,
+  "isEffectExist": false,
+  "rare": "C"
+}

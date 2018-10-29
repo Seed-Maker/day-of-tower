@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "일꾼 개미",
+  "monsterType": "벌레",
+  "explain": "개미 집단 속 일꾼 개미로 체력이 약하지만 강력한 공격력을 자랑한다.",
+  "hp": 1,
+  "atk": 4,
+  "cost": 4,
+  "isEffectExist": false,
+  "rare": "C"
+}
