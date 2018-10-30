@@ -7,5 +7,6 @@
   "atk": 2,
   "cost": 5,
   "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [패 또는 덱에서 '민들민들레'를 1장 소환조건을 무시하고 소환한다.]",
   "rare": "C"
 }

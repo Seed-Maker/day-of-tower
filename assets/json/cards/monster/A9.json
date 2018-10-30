@@ -7,5 +7,6 @@
   "atk": 6,
   "cost": 10,
   "isEffectExist": true,
+  "effectExplain": "$필드 위에 존재하는 모든 '오크'종족 몬스터의 공격력이 2만큼 오른다.",
   "rare": "E"
 }

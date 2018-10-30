@@ -7,5 +7,6 @@
   "atk": 3,
   "cost": 5,
   "isEffectExist": true,
+  "effectExplain": "$상대 필드의 몬스터 중 한마리를 선택한 뒤 15LP를 지불하고 패로 돌려보낸다.",
   "rare": "C"
 }

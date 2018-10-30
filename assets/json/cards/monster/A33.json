@@ -7,5 +7,6 @@
   "atk": 0,
   "cost": 2,
   "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다:[패 또는 덱에서 '온천계란'을 1장 소환조건을 무시하고 소환한다.]",
   "rare": "C"
 }

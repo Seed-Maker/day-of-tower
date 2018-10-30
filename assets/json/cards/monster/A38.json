@@ -7,5 +7,6 @@
   "atk": 2,
   "cost": 10,
   "isEffectExist": true,
+  "effectExplain": "$95LP를 지불하고 발동한다: [패에서 몬스터 한장의 소환조건을 무시하고 필드에 소환한다.]",
   "rare": "E"
 }

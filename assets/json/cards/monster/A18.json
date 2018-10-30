@@ -7,5 +7,6 @@
   "atk": 3,
   "cost": 6,
   "isEffectExist": true,
+  "effectExplain": "$자신의 턴에 LP를 15 소모하고 이 카드를 파괴하는 것으로 발동:[]",
   "rare": "E"
 }

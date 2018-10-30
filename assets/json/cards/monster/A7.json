@@ -7,5 +7,6 @@
   "atk": 3,
   "cost": 6,
   "isEffectExist": false,
+  "effectExplain": "$이 카드 이외의 모든 몬스터 카드의 체력은 1만큼 감소한다.",
   "rare": "R"
 }
