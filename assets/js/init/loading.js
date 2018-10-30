@@ -236,19 +236,19 @@ loading.init().then(() => {
   const MONTER_CARDS = 75,
         MAGIC_CARDS = 28;
 
-  let jsonList = (() => {
-    let i,
-        arrA = [],
-        arrB = [];
-
-    for (i = 2; i <= MONTER_CARDS; i++) arrA.push(i);
-    for (i = 2; i <= MAGIC_CARDS;  i++) arrB.push(i);
-
-    arrA = arrA.map(n => `assets/json/cards/monster/A${n}.json`);
-    arrB = arrB.map(n => `assets/json/cards/magic/B${n}.json`);
-
-    return arrA.concat(arrB);
-  })();
+  // let jsonList = (() => {
+  //   let i,
+  //       arrA = [],
+  //       arrB = [];
+  //
+  //   for (i = 2; i <= MONTER_CARDS; i++) arrA.push(i);
+  //   for (i = 2; i <= MAGIC_CARDS;  i++) arrB.push(i);
+  //
+  //   arrA = arrA.map(n => `assets/json/cards/monster/A${n}.json`);
+  //   arrB = arrB.map(n => `assets/json/cards/magic/B${n}.json`);
+  //
+  //   return arrA.concat(arrB);
+  // })();
 
   let htmlList = [
     'assets/html/main.html',
@@ -289,7 +289,7 @@ loading.init().then(() => {
     // TODO: 개발자모드이므로 로딩속도가 느려질 수 있음을 경고하기.
     let randKey = String(Math.random()).replace('.', '');
     [
-      jsonList, htmlList,
+      /*jsonList,*/ htmlList,
       cssList, jsList,
       imgList
     ].forEach(array => {
@@ -315,7 +315,7 @@ loading.init().then(() => {
     html: htmlList,
     css: cssList,
     js: jsList,
-    json: jsonList,
+    //json: jsonList,
     img: imgList
   }).then(() => {
     htmlList.forEach(loadHtmlAndAppend);

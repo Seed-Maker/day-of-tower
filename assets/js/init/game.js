@@ -3,7 +3,7 @@ window.wait = ms => new Promise(
 );
 
 window.game = {
-  version: "beta_0.01",
+  version: "beta_0.011",
   player: {
     name: "",
     deck: []
@@ -143,14 +143,14 @@ window.game = {
 
     user = new game.Player({
       name: userName,
-      profileImage: await loading.loadImage('/assets/image/profile/iconmonstr-user-32-240.png'),
+      profileImage: await loading.loadImage('assets/image/profile/iconmonstr-user-32-240.png'),
       deck: [],
       crystal: 0
     });
 
     enemy = new game.Player({
       name: "상대방",
-      profileImage: await loading.loadImage('/assets/image/profile/iconmonstr-user-32-240.png'),
+      profileImage: await loading.loadImage('assets/image/profile/iconmonstr-user-32-240.png'),
       deck: [],
       crystal: 0
     });
