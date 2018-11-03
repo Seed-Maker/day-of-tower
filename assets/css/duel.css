@@ -41,7 +41,7 @@
   height: 100vh;
   will-change: bottom;
   animation-fill-mode: forwards !important;
-  background: url("./assets/image/duel/background.png");
+  background: url("/day-of-tower/assets/image/duel/background.png");
   background-size: cover;
 }
 
@@ -271,25 +271,25 @@
 
 .dice-face.f1 {
   transform: rotateY(0deg) translateZ(80px);
-  background: url('./assets/image/duel/dice_face_1.png');
+  background: url('/day-of-tower/assets/image/duel/dice_face_1.png');
 }
 .dice-face.f2 {
   transform: rotateY(90deg) translateZ(80px);
-  background: url('./assets/image/duel/dice_face_2.png');
+  background: url('/day-of-tower/assets/image/duel/dice_face_2.png');
 }
 .dice-face.f3 {
   transform: rotateX(-90deg) translateZ(80px);
-  background: url('./assets/image/duel/dice_face_3.png');
+  background: url('/day-of-tower/assets/image/duel/dice_face_3.png');
 }
 .dice-face.f4 {
   transform: rotateX(90deg) translateZ(80px);
-  background: url('./assets/image/duel/dice_face_4.png');
+  background: url('/day-of-tower/assets/image/duel/dice_face_4.png');
 }
 .dice-face.f5 {
   transform: rotateY(-90deg) translateZ(80px);
-  background: url('./assets/image/duel/dice_face_5.png');
+  background: url('/day-of-tower/assets/image/duel/dice_face_5.png');
 }
 .dice-face.f6 {
   transform: rotateY(180deg) translateZ(80px);
-  background: url('./assets/image/duel/dice_face_6.png');
+  background: url('/day-of-tower/assets/image/duel/dice_face_6.png');
 }

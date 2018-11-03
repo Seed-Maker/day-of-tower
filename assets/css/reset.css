@@ -1,5 +1,6 @@
 html {
   font-family: 'Nanum Gothic', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 head {

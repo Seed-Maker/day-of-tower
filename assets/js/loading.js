@@ -233,23 +233,6 @@ window.loading = {
 
 
 loading.init().then(() => {
-  const MONTER_CARDS = 75,
-        MAGIC_CARDS = 28;
-
-  // let jsonList = (() => {
-  //   let i,
-  //       arrA = [],
-  //       arrB = [];
-  //
-  //   for (i = 2; i <= MONTER_CARDS; i++) arrA.push(i);
-  //   for (i = 2; i <= MAGIC_CARDS;  i++) arrB.push(i);
-  //
-  //   arrA = arrA.map(n => `assets/json/cards/monster/A${n}.json`);
-  //   arrB = arrB.map(n => `assets/json/cards/magic/B${n}.json`);
-  //
-  //   return arrA.concat(arrB);
-  // })();
-
   let htmlList = [
     'assets/html/main.html',
     'assets/html/say.html',
@@ -262,13 +245,24 @@ loading.init().then(() => {
     'assets/css/duel.css',
     'assets/css/button.css',
     'assets/css/form.css',
-    'assets/css/main.css'
+    'assets/css/main.css',
+    'assets/css/iOS.css'
   ];
 
   let jsList = [
-    'assets/js/init/game.js',
-    'assets/js/init/init.js',
-    'assets/js/init/load_card.js',
+    'assets/js/promise.js',
+    'assets/js/game/core.js',
+    'assets/js/game/dice.js',
+    'assets/js/game/interaction.js',
+    'assets/js/game/animation.js',
+    'assets/js/game/intro.js',
+    'assets/js/game/event.js',
+    'assets/js/game/card.js',
+    'assets/js/game/deck.js',
+    'assets/js/game/player.js',
+    'assets/js/game/crystal.js',
+    'assets/js/game/duel.js',
+    'assets/js/init.js'
   ];
 
   let imgList = [
@@ -289,12 +283,12 @@ loading.init().then(() => {
     // TODO: 개발자모드이므로 로딩속도가 느려질 수 있음을 경고하기.
     let randKey = String(Math.random()).replace('.', '');
     [
-      /*jsonList,*/ htmlList,
+      htmlList,
       cssList, jsList,
       imgList
     ].forEach(array => {
-      array.forEach((elem, i) => {
-        array[i] = elem + '?a=' + randKey;
+      array.forEach((elem, k) => {
+        array[k] = elem + '?a=' + randKey;
       });
     });
   }
