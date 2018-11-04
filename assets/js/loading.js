@@ -231,49 +231,17 @@ window.loading = {
 }
 
 
+loading.init().then(async () => {
+  function loadAssetsList(s) {
+    return ajax.fetchJSON({
+      path: `assets/json/loading/${s}.json`
+    });
+  }
 
-loading.init().then(() => {
-  let htmlList = [
-    'assets/html/main.html',
-    'assets/html/say.html',
-    'assets/html/duel.html'
-  ];
-
-  let cssList = [
-    'assets/css/reset.css',
-    'assets/css/master.css',
-    'assets/css/duel.css',
-    'assets/css/button.css',
-    'assets/css/form.css',
-    'assets/css/main.css',
-    'assets/css/iOS.css'
-  ];
-
-  let jsList = [
-    'assets/js/promise.js',
-    'assets/js/game/core.js',
-    'assets/js/game/dice.js',
-    'assets/js/game/interaction.js',
-    'assets/js/game/animation.js',
-    'assets/js/game/intro.js',
-    'assets/js/game/event.js',
-    'assets/js/game/card.js',
-    'assets/js/game/deck.js',
-    'assets/js/game/player.js',
-    'assets/js/game/crystal.js',
-    'assets/js/game/duel.js',
-    'assets/js/init.js'
-  ];
-
-  let imgList = [
-    'assets/image/main/tile.png',
-    'assets/image/main/logo.jpg',
-    'assets/image/main/iconmonstr-github-2-240.jpg',
-    'assets/image/duel/duel_start.png',
-    'assets/image/duel/background.png',
-    'assets/image/duel/card_back.png',
-    'assets/image/duel/card_frame/normal_monster.png'
-  ];
+  let htmlList = await loadAssetsList('html');
+  let cssList = await loadAssetsList('css');
+  let jsList = await loadAssetsList('js');
+  let imgList = await loadAssetsList('img');
 
   for (let i = 1; i <= 6; i++) {
     imgList.push(`assets/image/duel/dice_face_${i}.png`);
@@ -309,9 +277,12 @@ loading.init().then(() => {
     html: htmlList,
     css: cssList,
     js: jsList,
-    //json: jsonList,
     img: imgList
   }).then(() => {
     htmlList.forEach(loadHtmlAndAppend);
-  });
+    return wait(1);
+  }).then(() => tryWhileNoError(() => {
+    updateSafeArea();
+    $('#game-version').innerHTML = game.version;
+  }));
 });

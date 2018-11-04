@@ -40,10 +40,15 @@
   }
 }
 
+#main-display-logo,
+#main-display-start-btn,
+#main-display-icons {
+  margin: 2.5rem auto 1rem auto;
+}
+
 #main-display-logo {
   width: 80%;
   max-width: 550px;
-  margin: 1rem auto;
 }
 
 #main-display-icons {
@@ -55,4 +60,13 @@
   max-width: 75px;
   margin: .5rem;
   border-radius: .5rem;
+  background: white;
+}
+
+#game-version {
+  width: 70vw;
+  max-width: 350px;
+  border-radius: .5rem;
+  background: black;
+  text-align: center;
 }

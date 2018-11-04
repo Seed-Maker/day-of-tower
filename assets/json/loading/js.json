@@ -1,0 +1,16 @@
+[
+  "assets/js/promise.js",
+  "assets/js/iOS/safe-area.js",
+  "assets/js/game/core.js",
+  "assets/js/game/dice.js",
+  "assets/js/game/interaction.js",
+  "assets/js/game/animation.js",
+  "assets/js/game/intro.js",
+  "assets/js/game/event.js",
+  "assets/js/game/card.js",
+  "assets/js/game/deck.js",
+  "assets/js/game/player.js",
+  "assets/js/game/crystal.js",
+  "assets/js/game/duel.js",
+  "assets/js/init.js"
+]

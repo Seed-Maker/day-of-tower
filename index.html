@@ -4,13 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, viewport-fit=cover, user-scalable=no, initial-scale=1">
 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Day of tower">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="assets/image/iOS/icon.png">
+
     <title>데이 오브 타워</title>
 
-    <script src="assets/js/ajax.js"></script>
-    <script src="assets/js/query.js"></script>
+    <script src="/api/js/ajax.js"></script>
+    <script src="/api/js/query.js"></script>
     <script src="assets/js/init.js"></script>
   </head>
   <body>
     <h2 id=loading-alert>로딩중...</h2>
+    <script>
+      alert(localStorage.getItem('myCat'));
+      alert(typeof indexedDB);
+    </script>
   </body>
 </html>

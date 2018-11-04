@@ -15,6 +15,8 @@ game.start = async (user, enemy) => {
       userZone = $('#user-zone'),
       yn;
 
+  updateSafeArea();
+
   game.cardEvents.length = 0;
   game.nowTrun = null;
 
