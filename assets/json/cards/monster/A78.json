@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "만드라고라",
+  "monsterType": "식물",
+  "explain": "평소에는 약초지만,뽑는 순간 괴성을 지른다.",
+  "hp": 1,
+  "atk": 2,
+  "cost": 5,
+  "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [상대 필드의 몬스터 1장을 패로 돌려보낸다.]",
+  "rare": "C"
+}

@@ -7,5 +7,6 @@
   "atk": 6,
   "cost": 7,
   "isEffectExist": true,
+  "effectExplain": "$10LP를 지불하여 발동한다: [주사위를 던져 6이 나오면 상대 필드 위의 몬스터 하나를 파괴한다.]",
   "rare": "R"
 }

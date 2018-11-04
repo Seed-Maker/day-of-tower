@@ -7,5 +7,6 @@
   "atk": 40,
   "cost": 0,
   "isEffectExist": true,
+  "effectExplain": "$이 카드는 '금단의 소환주술 : 마수'의 효과로만 소환할 수 있으며, 이 효과는 무효화되지 않는다.",
   "rare": "U"
 }

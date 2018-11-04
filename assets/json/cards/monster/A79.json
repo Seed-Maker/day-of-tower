@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "만드라고라 뭉치",
+  "monsterType": "식물",
+  "explain": "여럿 만드라고라가 뭉쳐있다.더욱 시끄럽다.",
+  "hp": 3,
+  "atk": 6,
+  "cost": 15,
+  "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [상대 필드의 몬스터 3장을 패로 돌려보낸다.]",
+  "rare": "E"
+}

@@ -7,5 +7,6 @@
   "atk": 2,
   "cost": 16,
   "isEffectExist": true,
+  "effectExplain": "$15LP를 지불하고 발동한다: [필드에 존재하는 카드 중 1장을 패로 돌려 보낸다.]",
   "rare": "R"
 }

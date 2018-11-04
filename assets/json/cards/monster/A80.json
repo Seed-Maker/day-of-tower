@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "스마트 드래곤",
+  "monsterType": "용",
+  "explain": "매우 똑똑한 드래곤이다.인간에게 도움을 많이 준다.",
+  "hp": 6,
+  "atk": 5,
+  "cost": 18,
+  "isEffectExist": true,
+  "effectExplain": "$자신의 필드에서 몬스터 2장을 파괴한 뒤 소환한다.",
+  "rare": "R"
+}

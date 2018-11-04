@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "늑대 무리",
+  "monsterType": "짐승",
+  "explain": "늑대 무리이다.걸려든 사냥감은 놓치지 않는다.",
+  "hp": 5,
+  "atk": 4,
+  "cost": 10,
+  "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [상대 필드의 몬스터 1장을 선택한 뒤 모든 마법 효과를 없앤다]",
+  "rare": "R"
+}

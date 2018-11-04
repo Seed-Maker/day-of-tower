@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "Y-시리즈 투쾅로봇",
+  "monsterType": "기계",
+  "explain": "터트리는 것에 관심이 많아 움직이는 물체를 모두 터트린다고 한다.",
+  "hp": 3,
+  "atk": 5,
+  "cost": 6,
+  "isEffectExist": false,
+  "rare": "C"
+}

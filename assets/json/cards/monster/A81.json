@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "불타는 눈",
+  "monsterType": "짐승",
+  "explain": "불타오르는 눈이다.가까이 가면 뜨겁다.",
+  "hp": 2,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

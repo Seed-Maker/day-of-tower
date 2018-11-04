@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "입이 작아서 고민하는 악어",
+  "monsterType": "짐승",
+  "explain": "입이 작아서 먹을 걸 잘 못먹어 슬퍼하는 악어다.",
+  "hp": 4,
+  "atk": 2,
+  "cost": 8,
+  "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 이카드의 공격력을 2 감소시킨다.",
+  "rare": "E"
+}

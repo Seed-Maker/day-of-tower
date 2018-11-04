@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "시저 맨티스",
+  "monsterType": "벌레",
+  "explain": "날카로운 팔을 휘두르며 상대를 잘라버린다고 한다.",
+  "hp": 2,
+  "atk": 4,
+  "cost": 4,
+  "isEffectExist": false,
+  "rare": "C"
+}

@@ -7,5 +7,6 @@
   "atk": 1,
   "cost": 10,
   "isEffectExist": true,
+  "effectExplain": "$10LP를 지불하고 발동한다: [이 카드의 공격력을 영구적으로 2 증가시킨다. (중복 가능)]",
   "rare": "R"
 }

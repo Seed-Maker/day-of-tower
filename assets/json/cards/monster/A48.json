@@ -7,5 +7,6 @@
   "atk": 11,
   "cost": 60,
   "isEffectExist": true,
+  "effectExplain": "$15LP를 지불하고 발동한다: [이번 턴, 모든 마법카드의 효과를 무효화한다.]",
   "rare": "U"
 }

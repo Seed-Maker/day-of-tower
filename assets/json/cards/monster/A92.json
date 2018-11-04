@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "바람무사'윈스'",
+  "monsterType": "사람",
+  "explain": "바람과 칼을 다루는 무사이다.빠른 속도로 적을 처리한다.",
+  "hp": 3,
+  "atk": 5,
+  "cost": 7,
+  "isEffectExist": false,
+  "rare": "C"
+}

@@ -7,5 +7,6 @@
   "atk": 15,
   "cost": 60,
   "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [상대 필드의 모든 몬스터에게 10의 데미지를 준다.]",
   "rare": "U"
 }

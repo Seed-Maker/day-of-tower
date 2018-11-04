@@ -7,5 +7,6 @@
   "atk": 17,
   "cost": 60,
   "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [자신 필드 위의 이 카드를 제외한 모든 몬스터의 체력과 공격력을 15 만큼 올린다.]",
   "rare": "U"
 }

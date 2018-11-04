@@ -7,5 +7,6 @@
   "atk": 3,
   "cost": 15,
   "isEffectExist": true,
+  "effectExplain": "$8LP를 지불하고 발동한다: [상대방의 필드 중에서 몬스터 1장의 체력을 영구적으로 1 감소시킨다. (중복 가능)]",
   "rare": "R"
 }

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "천마",
+  "monsterType": "짐승",
+  "explain": "하늘을 나는 말이라고 한다.매우 빠르다.",
+  "hp": 3,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

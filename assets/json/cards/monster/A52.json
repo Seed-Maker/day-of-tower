@@ -7,5 +7,6 @@
   "atk": 1,
   "cost": 3,
   "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공하였을 때 발동한다: [필드 위에 존재하는 이 카드 이외의 벌레 종족 몬스터 한장을 파괴한다.]",
   "rare": "R"
 }

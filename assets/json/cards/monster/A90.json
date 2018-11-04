@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "Y-시리즈 무사로봇",
+  "monsterType": "기계",
+  "explain": "칼 다루는 것에 관심이 많아 움직이는 물체를 모두 베어버린다고 한다.",
+  "hp": 2,
+  "atk": 7,
+  "cost": 6,
+  "isEffectExist": false,
+  "rare": "C"
+}

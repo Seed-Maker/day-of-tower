@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "붐맨",
+  "monsterType": "사람",
+  "explain": "폭탄을 잘 다룬다고 한다.",
+  "hp": 4,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": true,
+  "effectExplain": "$8LP를 지불하고 상대 필드의 몬스터 1장의 체력 1을 감소시킨다.",
+  "rare": "C"
+}

@@ -7,5 +7,6 @@
   "atk": 1,
   "cost": 5,
   "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공하였을 때 발동한다: [카드를 한장 드로우한다.]",
   "rare": "R"
 }

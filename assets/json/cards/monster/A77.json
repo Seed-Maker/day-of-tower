@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "탐욕의 사제'그리드'",
+  "monsterType": "사람",
+  "explain": "탐욕이 엄청나서 모든 것을 가지고 싶어한다.",
+  "hp": 4,
+  "atk": 2,
+  "cost": 18,
+  "isEffectExist": true,
+  "effectExplain": "$15LP를 지불하고 발동한다: [덱에서 카드 1장을 패에 넣는다.]",
+  "rare": "R"
+}

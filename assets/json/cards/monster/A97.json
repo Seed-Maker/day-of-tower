@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "억울한 고블린",
+  "monsterType": "짐승",
+  "explain": "매우 억울해서 주변에 난동을 피운다.",
+  "hp": 3,
+  "atk": 7,
+  "cost": 16,
+  "isEffectExist": true,
+  "effectExplain": "$소환에 성공했을 때 발동한다: [자신의 필드 내에 이 카드를 제외한 모든 몬스터에게 1 데미지를 준 뒤 이 카드의 체력을 7 올린다.]",
+  "rare": "E"
+}

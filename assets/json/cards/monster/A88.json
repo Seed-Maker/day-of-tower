@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "Y-시리즈 찰칵로봇",
+  "monsterType": "기계",
+  "explain": "사진에 관심이 많아 움직이는 물체를 모두 찍는다고 한다.",
+  "hp": 4,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}
