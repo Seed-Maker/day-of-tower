@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "짐승을 부르는 나팔",
   "cost": 18,
+  "effectExplain": "$덱 또는 패에서 '짐승'종족 의 몬스터 2마리를 소환조건을 무시하고 소환한다.",
   "rare": "E"
 }

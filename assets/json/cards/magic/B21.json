@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "운명의 장난",
   "cost": 4,
+  "effectExplain": "$주사위를 던져 나온 눈의 수만큼 LP를 회복한다.",
   "rare": "C"
 }

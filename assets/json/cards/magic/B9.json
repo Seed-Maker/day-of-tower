@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "만병통치약",
   "cost": 10,
+  "effectExplain": "$필드 위에 존재하는 몬스터 하나를 지정하여 대상 몬스터의 상태이상을 모두 제거한다.",
   "rare": "C"
 }

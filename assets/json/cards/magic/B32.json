@@ -1,0 +1,7 @@
+{
+  "cardType": "magic",
+  "name": "포도주와 축제",
+  "cost": 15,
+  "effectExplain": "$자신의 필드에서 몬스터 2장을 선택하여 체력을 3 회복한다.",
+  "rare": "R"
+}

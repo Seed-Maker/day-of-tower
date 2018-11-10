@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "독이 든 사과",
   "cost": 16,
+  "effectExplain": "$필드 위에 존재하는 몬스터 하나를 지정하여 매 턴 종료시 체력을 1만큼 감소시킨다.",
   "rare": "C"
 }

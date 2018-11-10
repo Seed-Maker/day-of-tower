@@ -1,6 +1,7 @@
 {
   "cardType": "magic",
-  "name": "일반",
+  "name": "일반화",
   "cost": 9,
+  "effectExplain": "$필드 위의 몬스터 1장을 공격력 3으로 만든다.",
   "rare": "R"
 }

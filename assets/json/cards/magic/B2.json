@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "체인 라이트닝",
   "cost": 15,
+  "effectExplain": "$상대 필드 위에 몬스터들에게 2만큼의 데미지를 준다.",
   "rare": "R"
 }

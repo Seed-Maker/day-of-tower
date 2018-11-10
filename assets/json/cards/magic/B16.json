@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "스위칭!",
   "cost": 13,
+  "effectExplain": "$필드 위에 존재하는 몬스터 하나의 공격력과 체력을 서로 교체한다.",
   "rare": "R"
 }

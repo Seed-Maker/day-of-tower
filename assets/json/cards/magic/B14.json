@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "과부화",
   "cost": 17,
+  "effectExplain": "$필드 위에 존재하는 '기계'종족 몬스터의 공격력을 2배로 만들고 10만큼의 데미지를 준다.",
   "rare": "E"
 }

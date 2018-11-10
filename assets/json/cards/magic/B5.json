@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "응급치료",
   "cost": 11,
+  "effectExplain": "$필드 위에 존재하는 몬스터 하나를 지정하여 체력을 10만큼 증가 시킨다.",
   "rare": "C"
 }

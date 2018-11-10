@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "주술 금지",
   "cost": 25,
+  "effectExplain": "$상대가 마법카드를 발동 했을때 해당 턴 동안 모든 마법카드의 효과는 무효화된다.",
   "rare": "E"
 }

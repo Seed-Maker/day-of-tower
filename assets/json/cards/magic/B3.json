@@ -2,5 +2,6 @@
   "cardType": "magic",
   "name": "EMP 폭탄",
   "cost": 15,
+  "effectExplain": "$상대 필드 위에 '기계'종족 몬스터들에게 4만큼의 데미지를 준다.",
   "rare": "C"
 }

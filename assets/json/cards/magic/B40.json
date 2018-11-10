@@ -1,0 +1,7 @@
+{
+  "cardType": "magic",
+  "name": "광나는 스패너",
+  "cost": 15,
+  "effectExplain": "$자신의 필드 내에 '기계'종족 몬스터를 1장 선택하여 공격력을 5 올린다.",
+  "rare": "C"
+}
