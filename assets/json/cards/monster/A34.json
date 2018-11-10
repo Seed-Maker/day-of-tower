@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "온천계란",
   "monsterType": "?",
-  "explain": "온천계란이다.맞으면 아프다고 한다.",
+  "explain": "온천계란이다. 맞으면 아프다고 한다.",
   "hp": 1,
   "atk": 2,
   "cost": 2,

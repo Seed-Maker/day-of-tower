@@ -1,8 +1,8 @@
 {
   "cardType": "monster",
-  "name": "샤이닝 드래건",
+  "name": "샤이닝 드래곤",
   "monsterType": "용",
-  "explain": "반짝반짝 빛나는 용이다.입에서 레이저를 뿜는다.",
+  "explain": "반짝반짝 빛나는 용이다. 입에서 레이저를 뿜는다.",
   "hp": 6,
   "atk": 5,
   "cost": 6,

@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "만드라고라",
   "monsterType": "식물",
-  "explain": "평소에는 약초지만,뽑는 순간 괴성을 지른다.",
+  "explain": "평소에는 약초지만, 뽑는 순간 괴성을 지른다.",
   "hp": 1,
   "atk": 2,
   "cost": 5,

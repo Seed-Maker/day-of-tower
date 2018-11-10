@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "Z-시리즈 뚜벅로봇",
   "monsterType": "기계",
-  "explain": "뚜벅뚜벅 걷는다.귀엽다.",
+  "explain": "뚜벅뚜벅 걷는다. 귀엽다.",
   "hp": 2,
   "atk": 2,
   "cost": 3,

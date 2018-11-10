@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "큰 이빨 호랑이",
+  "monsterType": "짐승",
+  "explain": "큰 이빨을 가진 호랑이다. 이빨을 사용해 사냥에 나선다.",
+  "hp": 4,
+  "atk": 6,
+  "cost": 7,
+  "isEffectExist": false,
+  "rare": "C"
+}

@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "튤립 공주",
   "monsterType": "식물",
-  "explain": "식물 왕국의 튤립 공주이다 매우 고귀한 척을 한다고 한다.",
+  "explain": "식물 왕국의 튤립 공주이다. 매우 고귀한 척을 한다고 한다.",
   "hp": 3,
   "atk": 2,
   "cost": 5,

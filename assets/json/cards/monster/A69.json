@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "어둠의 정령",
   "monsterType": "정령",
-  "explain": "어둠을 다루는 정령이다.매우 어둡다고 한다.",
+  "explain": "어둠을 다루는 정령이다. 매우 어둡다고 한다.",
   "hp": 2,
   "atk": 2,
   "cost": 4,

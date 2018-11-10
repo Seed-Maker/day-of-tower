@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "Z-시리즈 강철합체로봇",
   "monsterType": "기계",
-  "explain": "Z-시리즈의 로봇이 합쳐진 로봇이다.매우 단단하다고 한다.",
+  "explain": "Z-시리즈의 로봇이 합쳐진 로봇이다. 매우 단단하다고 한다.",
   "hp": 8,
   "atk": 10,
   "cost": 18,

@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "배고픈 다람쥐",
+  "monsterType": "짐승",
+  "explain": "배가 고픈 다람쥐이다. 먹이를 주면 아주 좋아한다.",
+  "hp": 2,
+  "atk": 2,
+  "cost": 4,
+  "isEffectExist": true,
+  "effectExplain": "$이 카드가 소환에 성공했을 때 필드에 지속마법 '도토리숲'을 발동한다.",
+  "rare": "R"
+}

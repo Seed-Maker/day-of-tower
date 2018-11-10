@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "사고로 죽은 광부",
+  "monsterType": "고스트",
+  "explain": "일하다가 사고로 사망한 광부다.",
+  "hp": 3,
+  "atk": 3,
+  "cost": 5,
+  "isEffectExist": false,
+  "rare": "C"
+}

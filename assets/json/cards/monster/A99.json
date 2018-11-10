@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "약탈자 무리",
   "monsterType": "사람",
-  "explain": "약탈자들이 모여있다.가까이 가지 않는 것이 좋을 것 같다.",
+  "explain": "약탈자들이 모여있다. 가까이 가지 않는 것이 좋을 것 같다.",
   "hp": 6,
   "atk": 5,
   "cost": 11,

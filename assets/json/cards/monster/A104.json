@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "바쁜 의무병",
+  "monsterType": "사람",
+  "explain": "매우 바빠서 보기 힘든 의무병이다.",
+  "hp": 4,
+  "atk": 1,
+  "cost": 30,
+  "isEffectExist": true,
+  "effectExplain": "$10LP를 지불하여 발동한다: [자신의 필드에서 몬스터 3장을 선택한 뒤 체력 3을 회복한다.]",
+  "rare": "C"
+}

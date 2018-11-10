@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "땅의 정령",
   "monsterType": "정령",
-  "explain": "땅을 다루는 정령이다.무겁다고 한다.",
+  "explain": "땅을 다루는 정령이다. 무겁다고 한다.",
   "hp": 2,
   "atk": 2,
   "cost": 4,

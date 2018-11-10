@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "늑대 무리",
   "monsterType": "짐승",
-  "explain": "늑대 무리이다.걸려든 사냥감은 놓치지 않는다.",
+  "explain": "늑대 무리이다. 걸려든 사냥감은 놓치지 않는다.",
   "hp": 5,
   "atk": 4,
   "cost": 10,

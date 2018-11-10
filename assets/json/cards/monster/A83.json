@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "피닉스",
   "monsterType": "짐승",
-  "explain": "불타오른는 새다.마주친 자는 모두 불타오른다고 한다.",
+  "explain": "불타오른는 새다. 마주친 자는 모두 불타오른다고 한다.",
   "hp": 4,
   "atk": 5,
   "cost": 8,
