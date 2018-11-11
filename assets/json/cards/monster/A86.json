@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "Z-시리즈 붕붕로봇",
   "monsterType": "기계",
-  "explain": "등에 달린 날개를 통해 날라다닌다.",
+  "explain": "날개가 달려 있어서 이동 속도가 매우 빠르다고 한다. 날개를 정비하는데 많은 시간을 쏱는다.",
   "hp": 3,
   "atk": 2,
   "cost": 4,

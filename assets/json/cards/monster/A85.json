@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "Z-시리즈 달칵로봇",
   "monsterType": "기계",
-  "explain": "달칵달칵 걷는다. 시끄럽다.",
+  "explain": "걸을 때마다 특이한 소리가 난다고 한다. 살짝 귀가 아프다.",
   "hp": 2,
   "atk": 2,
   "cost": 3,

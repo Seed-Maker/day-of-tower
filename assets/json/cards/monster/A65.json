@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "물의 정령",
   "monsterType": "정령",
-  "explain": "물을 다루는 정령이다. 차갑다고 한다.",
+  "explain": "다른 정령들보다 친화적인 정령이기 때문에 항상 옆에 많은 친구들이 존재한다고 한다.",
   "hp": 2,
   "atk": 2,
   "cost": 4,

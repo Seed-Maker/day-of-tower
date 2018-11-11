@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "땅의 정령",
   "monsterType": "정령",
-  "explain": "땅을 다루는 정령이다. 무겁다고 한다.",
+  "explain": "묵묵한 성격으로 건들려도 반응이 별로 없다. 하지만 왠지 모르게 믿음이 가는 친구라고 한다.",
   "hp": 2,
   "atk": 2,
   "cost": 4,
