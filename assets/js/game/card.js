@@ -1,22 +1,10 @@
-/**
-*  @async
-*  @method game.getCardData 카드의 정보를 받아 리턴.
-*  @param {String} name 카드의 이름.
-*  @return {game.Card}
-*/
-game.getCardData = async name => {
-  let path = `assets/game/card/${name}.js`;
-  let script = await ajax.fetch({ path });
-  return eval(script);
-}
-
-
 game.Card = class {
   /**
   *  @constructor
   *  @param {Object} card
   *  @param {String} card.code 카드의 코드.
   *  @param {String} card.name 카드의 이름.
+  *  @param {String} card.cardType 카드의 타입.
   *  @param {Number} card.cost 카드의 코스트.
   *  @param {String} card.effectExplain 카드의 효과 설명.
   *  @param {game.CardEvent} card.effect 카드의 효과 이벤트.
@@ -24,11 +12,48 @@ game.Card = class {
   constructor(card) {
     this.code = card.code;
     this.name = card.name;
+    this.cardType = card.cardType;
     this.cost = card.cost;
     this.effectExplain = card.effectExplain;
     this.effect = card.effect;
     this.rare = card.rare;
   }
+
+
+  /**
+  *  @async
+  *  @method game.getCardData 카드의 정보를 받아 리턴.
+  *  @param {String} codeName 카드의 코드.
+  *  @return {game.Card}
+  */
+  static async load(codeName) {
+    let type;
+
+    switch (codeName[0]) {
+      case 'A':
+        type = "monster";
+        break;
+
+      case 'B':
+        type = "magic";
+        break;
+
+      default:
+        throw new Error("unknown card type.");
+    }
+
+    const json = await ajax.fetchJSON(`assets/json/cards/${type}/${codeName}.json`);
+    // const effect = json.isEffectExist? eval(
+    //   await ajax.fetch(`assets/js/game/card_effetct/${type}/${codeName}.js`)
+    // ) : null;
+
+    return new game.Card({
+      code: codeName,
+      ...json,
+      // efftct
+    });
+  }
+
 
   /**
   *  @async
@@ -36,7 +61,6 @@ game.Card = class {
   *  @return {HTMLElement}
   */
   async toHTML() {
-    // TODO: 구현
     let div = document.createElement('div'),
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
@@ -56,10 +80,10 @@ game.Card = class {
     canvas.height = ch;
 
     illust = await loading.loadImage(
-      `${imagePath}card_illust/${this.type}/${this.code}.png`
+      `${imagePath}card_illust/${this.cardType}/${this.code}.png`
     );
 
-    switch (this.type) {
+    switch (this.cardType) {
       case "magic":
 
         break;
@@ -95,13 +119,12 @@ game.Card = class {
     ctx.fillText(this.name, 28, 400);
 
     ctx.fillStyle = 'black';
-    ctx.fillText(this.monsterType + '족', 28, 440);
+    ctx.fillText(`${this.monsterType}족`, 28, 440);
 
     ctx.fillStyle = 'white';
     ctx.font = "30px Arial";
     ctx.fillText(`HP: ${this.hp}`, 28, 483);
     ctx.fillText(`ATK: ${this.atk}`, 265, 483);
-    760
 
     switch (this.rare.toUpperCase()) {
       case "C": bandColor = '#613e3e'; break;
@@ -125,7 +148,7 @@ game.MagicCard = class extends game.Card {
   */
   constructor(card) {
     super(card);
-    this.type = "magic";
+    this.cardType = "magic";
   }
 };
 
@@ -141,7 +164,7 @@ game.MonsterCard = class extends game.Card {
   */
   constructor(card) {
     super(card);
-    this.type = "monster";
+    this.cardType = "monster";
 
     this.hp = card.hp;
     this.atk = card.atk;

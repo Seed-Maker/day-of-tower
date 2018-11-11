@@ -1,5 +1,6 @@
 [
   "assets/css/reset.css",
+  "assets/css/content.css",
   "assets/css/master.css",
   "assets/css/duel.css",
   "assets/css/button.css",

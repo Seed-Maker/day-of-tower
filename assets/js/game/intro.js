@@ -8,19 +8,21 @@ game.introStart = async () => {
   $('#main-display').className = 'close';
 
   await wait(750);
-  await game.say([
-    `데이 오브 타워의 세계에 오신 것을 환영합니다!
-     (대화창을 클릭해서 다음으로 넘어갑니다.)`
-  ]);
+  // await game.say([
+  //   `데이 오브 타워의 세계에 오신 것을 환영합니다!
+  //    (대화창을 클릭해서 다음으로 넘어갑니다.)`
+  // ]);
 
-  do {
-    userName = await game.prompt(`
-      당신의 이름은 무엇인가요?
-    `, true);
-    yn = await game.confirm(`
-      멋진 이름이네요. "${userName}"님이 맞나요?
-    `);
-  } while (!yn);
+  // do {
+  //   userName = await game.prompt(`
+  //     당신의 이름은 무엇인가요?
+  //   `, true);
+  //   yn = await game.confirm(`
+  //     멋진 이름이네요. "${userName}"님이 맞나요?
+  //   `);
+  // } while (!yn);
+
+  userName = "TEST";
 
   game.player.name = userName;
 

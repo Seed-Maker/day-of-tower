@@ -45,7 +45,7 @@ window.loading = {
   *  @return {Promise} 로딩된 문자열화 된 스타일 시트를 Resolve하는 Promise 객체.
   */
   loadStyle(path = '', noApply) {
-    let promise = ajax.fetch({ path });
+    let promise = ajax.fetch(path);
     return noApply? promise : promise.then(res => {
       loading.appendStyle(res);
       return Promise.resolve(res);
@@ -60,7 +60,7 @@ window.loading = {
   *  @return {Promise} 로딩된 문자열화 된 JavaScript 코드를 Resolve하는 Promise 객체.
   */
   loadScript(path = '', noApply) {
-    let promise = ajax.fetch({ path });
+    let promise = ajax.fetch(path);
     return noApply? promise : promise.then(script => {
       try {
         eval(script);
@@ -79,7 +79,7 @@ window.loading = {
   *  @return {Promise} Parse된 HTML 요소들을 Resolve하는 Promise 객체.
   */
   loadHTML(path = '', toArray) {
-    return ajax.fetch({ path }).then(response => {
+    return ajax.fetch(path).then(response => {
       let div = document.createElement('div'),
           childs;
       div.innerHTML = response;
@@ -95,7 +95,7 @@ window.loading = {
   *  @return {Promise} Parse된 JSON 객체를 Resolve하는 Promise 객체.
   */
   loadJSON(path = '') {
-    return ajax.fetchJSON({ path });
+    return ajax.fetchJSON(path);
   },
 
 
@@ -107,6 +107,7 @@ window.loading = {
   *  @param {Array} assetsList.js 로딩할 JS 리스트.
   *  @param {Array} assetsList.json 로딩할 JSON 리스트.
   *  @param {Array} assetsList.img 로딩할 이미지 리스트.
+  *  @param {Array} assetsList.promises 기타 대기가 필요한 Promise 객체.
   *  @return {Promise} 모든 자료가 로드되었을 때 Resolve하는 Promise 객체.
   */
   loadAssets(assetsList = {}) {
@@ -114,7 +115,7 @@ window.loading = {
     let prom = Promise.resolve(),
         scriptList = [],
         assetsAmount = 0,
-        loadedAmount = 0,
+        loadedAmount = -1,
         displayWrapper = loading.displayWrapper,
         loadingBar = document.getElementById('loading-bar'),
         lw = loadingBar.width,
@@ -156,13 +157,15 @@ window.loading = {
     }
 
     ctx.fillStyle = LOADING_BAR_COLOR;
+
     displayWrapper.style.display = 'block';
+    displayWrapper.style.opacity = 1;
 
     if (assetsList.html)
       forEachFromArr(assetsList.html, src => {
         assetsAmount++;
         prom = prom.then(
-          () => ajax.fetch({path: src}).then(endLoad)
+          () => ajax.fetch(src).then(endLoad)
         );
       });
 
@@ -201,7 +204,16 @@ window.loading = {
         );
       });
 
+    if (assetsList.promises) {
+      forEachFromArr(assetsList.promises, pendingProm => {
+        assetsAmount++;
+        prom = prom.then(() => pendingProm).then(endLoad);
+      });
+    }
+
     ctx.clearRect(0, 0, 100**3, 100**3);
+
+    endLoad();
 
     return prom.then(() => {
       scriptList.forEach(script => {
@@ -221,7 +233,7 @@ window.loading = {
   *  @return {Promise} 로드된 Image 객체를 Resolve하는 Promise 객체.
   */
   loadImage(path = '') {
-    let img = new Image();
+    let img = new Image;
     return new Promise((resolve, reject) => {
       img.src = path;
       img.onerror = () => reject(path);
@@ -233,9 +245,7 @@ window.loading = {
 
 loading.init().then(async () => {
   function loadAssetsList(s) {
-    return ajax.fetchJSON({
-      path: `assets/json/loading/${s}.json`
-    });
+    return ajax.fetchJSON(`assets/json/loading/${s}.json`);
   }
 
   let htmlList = await loadAssetsList('html');
@@ -282,7 +292,6 @@ loading.init().then(async () => {
     htmlList.forEach(loadHtmlAndAppend);
     return wait(1);
   }).then(() => tryWhileNoError(() => {
-    updateSafeArea();
     $('#game-version').innerHTML = game.version;
   }));
 });

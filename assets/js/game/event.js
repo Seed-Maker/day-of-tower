@@ -3,16 +3,18 @@
 *  @param {String} eventName 체크할 이벤트의 이름.
 *  @return {Boolean} 발동성공한 카드 이벤트가 하나라도 존재하면 true, 예외는 false.
 */
-game.checkCardEventAll = eventName => {
+game.checkCardEventAll = async eventName => {
   let isEventExist = false;
-  game.cardEvents.forEach(event => {
-    isEventExist = event.checkEvent(eventName) || isEventExist;
+  await game.cardEvents.asyncForEach(async event => {
+    isEventExist =
+      await event.checkEvent(eventName)
+      || isEventExist;
   });
   return isEventExist;
 }
 
 
-game.CardEvent = class  {
+game.CardEvent = class {
   /**
   *  @constructor
   *  @param {game.Card} card 이벤트의 주인 카드.
@@ -23,7 +25,7 @@ game.CardEvent = class  {
     this.card = card;
     for (let methodName in events) {
       let method = events[methodName];
-      if (typeof method !== "function") return;
+      if (typeof method !== "function") continue;
       this[methodName] = method;
     }
   }

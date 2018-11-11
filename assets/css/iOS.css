@@ -1,15 +1,15 @@
 .apple-safe-area-inset-left {
-  width: const(safe-area-inset-left);
+  width: constant(safe-area-inset-left);
   width: env(safe-area-inset-left);
 }
 
 .apple-safe-area-inset-right {
-  width: const(safe-area-inset-right);
+  width: constant(safe-area-inset-right);
   width: env(safe-area-inset-right);
 }
 
 .apple-safe-area-inset-top {
-  height: const(safe-area-inset-top);
+  height: constant(safe-area-inset-top);
   height: env(safe-area-inset-top);
 }
 

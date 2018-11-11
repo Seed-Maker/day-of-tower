@@ -6,8 +6,14 @@ window.addEventListener('DOMContentLoaded', function () {
   function checkES7() {
     //ES7 체크.
     try {
+      let s = true;
       eval('class test {constructor(){} async methodName(){}}');
-      return !!window.Promise;
+      ([
+        'Promise', 'indexedDB'
+      ]).forEach(function (name) {
+        s = s && window[name];
+      });
+      return s;
     } catch (e) {
       return false;
     }
@@ -44,7 +50,7 @@ window.gameStart = function () {
 
   initGame();
   startBtn.removeAttribute('onclick');
-  setInterval(function () {
+  setTimeout(function () {
     startBtn.innerHTML = '계속';
   }, 1000);
   startBtn.onclick = function () {

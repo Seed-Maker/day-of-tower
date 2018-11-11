@@ -61,7 +61,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 12px 0 0 0;
+  padding: .5rem 0;
   background: #323232;
   color: white;
 }
@@ -95,19 +95,17 @@
 
 #player-info {
   position: absolute;
-  width: 450px;
+  width: 100vw;
+  max-width: 450px;
   top: 0;
   left: -200vw;
+  padding-top: 3rem;
   border-right: .25rem solid #323232;
   background: rgba(85, 85, 85, 0.7);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   color: white;
   animation-fill-mode: forwards !important;
-}
-
-@media (max-width: 650px) {
-  #player-info {
-    width: 100vw;
-  }
 }
 
 #player-info.open {
@@ -137,31 +135,17 @@
 }
 
 #player-info-close-btn {
-  max-width: 250px;
-  margin: 45vh auto 0 auto;
+  width: 90%;
+  max-width: 100vw;
+  margin: auto;
 }
 
 #enemy-info,
 #user-info {
-  position: absolute;
-  left: 0;
-  width: 100%;
+  width: 90%;
   border-radius: 1rem;
   background: #323232;
-}
-
-#enemy-info {
-  top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-#user-info {
-  bottom: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+  margin: 1rem auto;
 }
 
 #user-profile-image,

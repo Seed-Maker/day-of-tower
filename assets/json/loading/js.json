@@ -1,6 +1,6 @@
 [
-  "assets/js/promise.js",
-  "assets/js/iOS/safe-area.js",
+  "assets/js/object/array.js",
+  "assets/js/object/promise.js",
   "assets/js/game/core.js",
   "assets/js/game/dice.js",
   "assets/js/game/interaction.js",
