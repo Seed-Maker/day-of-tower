@@ -12,9 +12,21 @@ game.Player = class {
     this.name = player.name || "알 수 없는 플레이어";
     this.profileImage = player.profileImage || new Image();
     this.deck = player.deck;
+    this.hand = new game.Deck;
     this.luckyPoint = player.luckyPoint || 10;
     this.crystal = player.crystal || new game.Crystal();
     this.isUseCrystal = false;
+  }
+
+
+  /**
+  *  @method game.Player.draw 카드를 드로우한다.
+  *  @return {game.Card} 드로우한 카드.
+  */
+  draw() {
+    let card = this.deck.draw();
+    this.hand.append(card);
+    return card;
   }
 
 

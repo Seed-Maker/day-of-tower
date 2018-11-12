@@ -19,43 +19,20 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function loadScript() {
-    return ajax.fetch({
-      path: 'assets/js/loading.js'
-    }).then(function (script) {
-      try {
-        eval(script);
-      } catch (e) {
-        console.log(e);
-      }
-    });
+  function runScript(script) {
+    try {
+      eval(script);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function loadScript() {
+    let script = await ajax.fetch('assets/js/loading.js');
+    runScript(script);
+    script = await ajax.fetch('assets/js/game/init_game.js');
+    runScript(script);
   }
 
   (checkES7()? loadScript : notSupport)();
 }, false);
-
-window.initGame = function () {
-  $('#in-game-menu-enemy').onclick = function () {
-    let isOpen = ($('#player-info').className === 'open');
-    $('#player-info').className = (isOpen? 'close' : 'open');
-  }
-
-  $('#player-info-close-btn').onclick = function () {
-    $('#player-info').className = 'close';
-  }
-}
-
-window.gameStart = function () {
-  let startBtn = $('#main-display-start-btn');
-
-  initGame();
-  startBtn.removeAttribute('onclick');
-  setTimeout(function () {
-    startBtn.innerHTML = '계속';
-  }, 1000);
-  startBtn.onclick = function () {
-    $('#main-display').className ='close';
-  }
-
-  game.introStart();
-}

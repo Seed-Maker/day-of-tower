@@ -31,14 +31,14 @@ game.introStart = async () => {
   user = new game.Player({
     name: userName,
     profileImage: await loading.loadImage('assets/image/profile/iconmonstr-user-32-240.png'),
-    deck: [],
+    deck: await game.Deck.load('tutorial/enemy'),
     crystal: 0
   });
 
   enemy = new game.Player({
     name: "상대방",
     profileImage: await loading.loadImage('assets/image/profile/iconmonstr-user-32-240.png'),
-    deck: [],
+    deck: await game.Deck.load('tutorial/user'),
     crystal: 0
   });
 

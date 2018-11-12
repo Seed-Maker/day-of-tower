@@ -8,17 +8,16 @@ game.Deck = class {
     if (cards instanceof game.Deck)
       cards = cards.list;
 
-    this.list = Array.from(cards);
+    this.list = Array.from(cards || []);
   }
 
 
   /**
   *  @method game.Deck.load
   *  @param {String} name Deck Name
-  *  @parma {Boolean} noLoadingBar true일 경우, 로딩 애니메이션을 실행하지 않습니다.
   *  @return {game.Deck}
   */
-  static async load(name, noLoadingBar) {
+  static async load(name) {
     let src = `assets/json/deck/${name}.json`,
         list = await ajax.fetchJSON(src),
         promises = [];
@@ -40,7 +39,7 @@ game.Deck = class {
       const cardPath = cardCodeToPath(list[i]);
 
       const cardData = `assets/json/cards/${cardPath}.json`;
-      const illustSrc = `assets/image/card_illust/${cardPath}.png`;
+      const illustSrc = `assets/image/duel/card_illust/${cardPath}.png`;
       const effectSrc = `assets/js/game/card_effect/${cardPath}.js`;
 
       promises.push(ajax.fetch(cardData));
@@ -60,26 +59,50 @@ game.Deck = class {
 
   /**
   *  @method game.Deck.shuffle 덱을 섞습니다.
-  *  @return {Array} 섞여진 덱.
+  *  @return {Number} 덱의 카드 수.
   */
   shuffle() {
-    let deck = this.list;
-    let i = deck.length - 1;
+    let list = this.list;
+    let i = list.length - 1;
     if (i <= 0) return deck;
     for (; i; i--) {
       let k = Math.floor(Math.random() * (i + 1));
-      [ deck[i], deck[k] ] = [ deck[k], deck[i] ];
+      [ list[i], list[k] ] = [ list[k], list[i] ];
     }
-    return deck;
+    return list.length;
   }
 
 
   /**
-  * @method game.Deck.draw 덱에서 카드를 뽑는다.
-  * @return {game.Card} 뽑은 카드.
+  *  @method game.Deck.sort 덱을 정렬합니다.
+  *  @return {Number} 덱의 카드 수.
+  */
+  sort() {
+    let list = this.list;
+    list = list.sort((a,b) => {
+      return a.code.charCodeAt() - b.code.charCodeAt();
+    });
+    return list.length;
+  }
+
+
+  /**
+  *  @method game.Deck.draw 덱에서 카드를 뽑는다.
+  *  @return {game.Card} 뽑은 카드.
   */
   draw() {
     return this.list.pop();
+  }
+
+
+  /**
+  *  @method game.Deck.append 덱에서 카드를 넣는다.
+  *  @param {game.Card} card 넣을 카드.
+  *  @return {Number} 넣은 후의 덱의 카드 수.
+  */
+  append(card) {
+    this.list.push(card);
+    return this.list.length;
   }
 
 

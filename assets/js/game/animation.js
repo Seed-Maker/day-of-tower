@@ -65,9 +65,15 @@ game.throwDiceAnime = (userDiceNumber, enemyDiceNumber) => {
   if (!enemyDiceNumber)
     enemyDiceWrapeer.style.display = 'none';
 
+  if (!userDiceNumber)
+    userDiceWrapeer.style.display = 'none';
+
   return new Promise(resolve => {
-    $('#player-info').className = 'close';
-    userDice.onclick = resolve;
+    if (userDiceNumber) {
+      userDice.onclick = resolve;
+    } else {
+      setTimeout(resolve, 1000);
+    }
   }).then(() => {
     function getDeg(type, num) {
       switch (type.toLowerCase()) {
@@ -110,7 +116,10 @@ game.throwDiceAnime = (userDiceNumber, enemyDiceNumber) => {
 
     return wait(1000);
   }).then(() => Promise.race([
-       wait(isSame? 1000 : 4000),
+      wait(
+        (isSame || !userDiceNumber)?
+        1000 : 4000
+      ),
       new Promise(
         resolve => userDice.onclick = resolve
       )
@@ -123,4 +132,70 @@ game.throwDiceAnime = (userDiceNumber, enemyDiceNumber) => {
     enemyDiceWrapeer.style.transform = ``;
     return wait(1);
   });
+}
+
+
+/**
+*  @method game.cardDrawHandler 카드 드로우 애니메이션 핸들러
+*  @param {String} player "enemy" 또는 "user"이며 드로우한 플레이어를 나타냄.
+*  @param {game.Card} card 드로우한 카드. 적의 드로우일 경우 정의하지 않는다.
+*/
+game.cardAnimeDrawHandler = async (player, card) => {
+  let target = $(`#${player}-hand-visual`),
+      html = await (
+        (player === 'user' && card)?
+        card.toHTML() :
+        loading.loadImage('assets/image/duel/card_back.png')
+      );
+
+  if (!target)
+    throw new Error('unknown player identifier');
+
+  if (player === "enemy") {
+    let canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+
+    canvas.width = 500;
+    canvas.height = 800;
+
+    ctx.translate(canvas.width/2, canvas.height/2);
+    ctx.rotate(Math.PI);
+    ctx.drawImage(html, -250, -400, 500, 800);
+
+    html = canvas;
+  }
+
+  target.appendChild(html);
+
+  html.setAttribute('code', card.code);
+
+  if (player === "user") {
+    html.onclick = function () {
+      let code = this.getAttribute('code');
+      game.displayCardData(code);
+      if ($('#in-game-card-info').className != 'open')
+        $('#in-game-menu-card').click();
+    }
+
+    target.style.width = 9.5 * target.childNodes.length + 'vw';
+    target.style.height = 9.5 * 1.6 + 'vw';
+  }
+
+  await wait(50);
+
+  Array
+  .from(target.childNodes)
+  .forEach((elem, i) => {
+    const length = target.childNodes.length;
+    const sign = (player === "user"? 1 : -1);
+    const rd = (-15 + i * 30 / (length - 1)) * sign,
+          ty = Math.floor(Math.sin(Math.PI * i/(length-1)) * -25) * sign;
+
+    elem.style.transform = `
+      translateX(0)
+      translateY(${ty}px)
+      rotate(${rd}deg)
+    `;
+  });
+  await wait(50);
 }

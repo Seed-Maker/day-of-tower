@@ -9,6 +9,9 @@
                                    Promise 객체를 반환하여야 한다.
 */
 game.start = async (user, enemy) => {
+  const FIRST_HAND_SIZE = 3,
+        FIRST_LP = 30;
+
   let enemyDice = 0,
       userDice = 0,
       enemyZone = $('#enemy-zone'),
@@ -16,23 +19,62 @@ game.start = async (user, enemy) => {
       yn;
 
   game.cardEvents.length = 0;
-  game.nowTrun = null;
-
+  game.nowTurn = null;
   game.user = user;
   game.enemy = enemy;
+
+  user.lp = FIRST_LP;
+  enemy.lp = FIRST_LP;
+
+  user.hand = new game.Deck;
+  enemy.hand = new game.Deck;
 
   $('#user-profile-image').src = user.profileImage.src;
   $('#enemy-profile-image').src = enemy.profileImage.src;
 
-  $('#user-name').innerHTML = user.name;
-  $('#enemy-name').innerHTML = enemy.name;
+  Array.from($$(`
+    #user-name,
+    #in-game-info-user-name
+  `)).forEach(elem => elem.innerHTML = user.name);
+
+  Array.from($$(`
+    #enemy-name,
+    #in-game-info-enemy-name
+  `)).forEach(elem => elem.innerHTML = enemy.name);
+
+  Array.from($$(`
+    #enemy-hand-visual,
+    #user-hand-visual,
+    #user-zone .monster,
+    #user-zone .magic,
+    #enemy-zone .monster,
+    #enemy-zone .magic
+  `)).forEach(elem => {
+    elem.innerHTML = '';
+  });
+
+  Array.from($$(`
+    #in-game-info-enemy-hand,
+    #in-game-info-enemy-deck,
+    #in-game-info-enemy-LP,
+    #in-game-info-user-hand,
+    #in-game-info-user-deck,
+    #in-game-info-user-LP
+  `)).forEach(elem => {
+    elem.innerHTML = 0;
+  });
+
   $('#player-info').className = 'open';
 
   await game.displayGameStartLogo();
 
+  $('#player-info').className = 'close';
+
   while (enemyDice === userDice) {
-    userDice = game.throwDice();
-    enemyDice = game.throwDice();
+    // userDice = game.throwDice();
+    // enemyDice = game.throwDice();
+    userDice = 6;
+    enemyDice = 3;
     await game.throwDiceAnime(userDice, enemyDice);
     await wait(250);
   }
@@ -53,17 +95,132 @@ game.start = async (user, enemy) => {
     `);
   }
 
+  user.deck.shuffle();
+  enemy.deck.shuffle();
+
+  for (let i = 0; i < FIRST_HAND_SIZE; i++) {
+    let card = {};
+
+    card.user = user.draw();
+    card.enemy = enemy.draw();
+
+    await game.cardAnimeDrawHandler('user', card.user);
+    await game.cardAnimeDrawHandler('enemy', card.enemy);
+  }
+
+  Array.from($$(`
+    #in-game-info-enemy-hand,
+    #in-game-info-user-hand
+  `)).forEach(elem => {
+    elem.innerHTML = FIRST_HAND_SIZE;
+  });
+
+  $('#in-game-info-user-LP').innerHTML = user.lp;
+  $('#in-game-info-enemy-LP').innerHTML = enemy.lp;
+  $('#in-game-info-user-deck').innerHTML = user.deck.length;
+  $('#in-game-info-enemy-deck').innerHTML = enemy.deck.length;
+
   game.checkCardEventAll('game-start');
+
+  game.startTurn(game.nowTurn);
 }
 
 
 /**
-*  @method game.turnEnd 턴을 종료한다.
+*  @method game.displayGameData 게임 정보를 업데이트하여 표시합니다.
 */
-game.turnEnd = () => {
+game.displayGameData = function () {
+  let user = game.user,
+      enemy = game.enemy;
+
+  $('#in-game-info-user-LP').innerHTML = user.lp;
+  $('#in-game-info-enemy-LP').innerHTML = enemy.lp;
+  $('#in-game-info-user-deck').innerHTML = user.deck.length;
+  $('#in-game-info-enemy-deck').innerHTML = enemy.deck.length;
+  $('#in-game-info-user-hand').innerHTML = user.hand.length;
+  $('#in-game-info-enemy-hand').innerHTML = enemy.hand.length;
+}
+
+
+/**
+*  @async
+*  @method game.startTurn 턴을 시작한다.
+*/
+game.startTurn = async function (player) {
+  game.displayGameData();
+  game.checkCardEventAll('turn-start');
+
+  await (player === "user"? game.say(`
+    당신의 턴입니다. 카드를 드로우하고 주사위를 던집니다.
+  `) : wait(1000));
+
+  game.displayGameData();
+  game.checkCardEventAll('turn-draw-start');
+
+  game.displayGameData();
+  await game.cardAnimeDrawHandler(player, game[player].draw());
+
+  game.displayGameData();
+  let dice = game.throwDice();
+  game[player].lp += dice;
+
+  game.displayGameData();
+  await (player === "user"?
+    game.throwDiceAnime(dice) :
+    game.throwDiceAnime(0, dice)
+  );
+  await (player === "user"? game.say(`
+    ${dice}LP를 회복합니다.
+  `) : wait(500));
+}
+
+
+/**
+*  @method game.endTurn 턴을 종료한다.
+*/
+game.endTurn = () => {
   if (!game.nowTurn)
     throw new Error("game not started");
 
   game.checkCardEventAll('turn-end');
   game.nowTurn = (game.nowTurn === 'user')? 'enemy' : 'user';
+}
+
+
+/**
+*  @async
+*  @method game.displayCardData 카드의 정보를 표시한다.
+*/
+game.displayCardData = async cardCode => {
+  let target = $('#in-game-card-info'),
+      image = $('#in-game-card-info .card-image'),
+      name = $('#in-game-card-info .card-name'),
+      cost = $('#in-game-card-info .card-cost'),
+      hp = $('#in-game-card-info .card-hp'),
+      atk = $('#in-game-card-info .card-atk'),
+      axplain = $('#in-game-card-info .card-explain'),
+      button = $('#in-game-card-info .card-button'),
+      card = await game.Card.load(cardCode);
+
+  image.innerHTML = '';
+  name.innerHTML = card.name;
+  hp.innerHTML = `HP: ${card.hp}`;
+  atk.innerHTML = `ATK: ${card.atk}`;
+  cost.innerHTML = `필요 LP: ${card.cost}`;
+  axplain.innerHTML = `${card.explain}`;
+
+  switch (card.cardType) {
+    case 'monster':
+      hp.style.display =
+      atk.style.display = 'block';
+      break;
+    case 'magic':
+      hp.style.display =
+      atk.style.display = 'none';
+      break;
+  }
+
+  let cardElem = await card.toHTML();
+  image.appendChild(cardElem);
+  cardElem.style.boxShadow = '8px 8px 6px 4px rgba(0,0,0,0.5)';
 }

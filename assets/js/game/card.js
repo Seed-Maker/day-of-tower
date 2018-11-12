@@ -43,14 +43,16 @@ game.Card = class {
     }
 
     const json = await ajax.fetchJSON(`assets/json/cards/${type}/${codeName}.json`);
-    // const effect = json.isEffectExist? eval(
-    //   await ajax.fetch(`assets/js/game/card_effetct/${type}/${codeName}.js`)
-    // ) : null;
+    const effect = json.isEffectExist? eval(
+      await ajax.fetch(`assets/js/game/card_effect/${type}/${codeName}.js`)
+    ) : null;
 
-    return new game.Card({
+    type = type[0].toUpperCase() + type.slice(1, 10);
+
+    return new game[`${type}Card`]({
       code: codeName,
       ...json,
-      // efftct
+      effect
     });
   }
 
@@ -83,20 +85,24 @@ game.Card = class {
       `${imagePath}card_illust/${this.cardType}/${this.code}.png`
     );
 
-    switch (this.cardType) {
-      case "magic":
+    // switch (this.cardType) {
+    //   case "magic":
+    //
+    //     break;
+    //
+    //   case "monster":
+    //     frame = await loading.loadImage(
+    //       `${imagePath}card_frame/${this.isEffectExist?'effect':'normal'}_monster.png`
+    //     );
+    //     break;
+    //
+    //   default:
+    //     throw new Error("unknown card type.");
+    // }
 
-        break;
-
-      case "monster":
-        frame = await loading.loadImage(
-          `${imagePath}card_frame/${this.isEffectExist?'effect':'normal'}_monster.png`
-        );
-        break;
-
-      default:
-        throw new Error("unknown card type.");
-    }
+    frame = await loading.loadImage(
+      `${imagePath}card_frame/${this.isEffectExist?'effect':'normal'}_monster.png`
+    );
 
     ctx.drawImage(frame, 0, 0, cw, ch);
     ctx.fillRect(
@@ -129,6 +135,7 @@ game.Card = class {
     switch (this.rare.toUpperCase()) {
       case "C": bandColor = '#613e3e'; break;
       case "R": bandColor = '#272727'; break;
+      case "E": bandColor = '#eeeeee'; break;
       case "U": bandColor = '#b51818'; break;
       case "L": bandColor = '#ffed00'; break;
     }

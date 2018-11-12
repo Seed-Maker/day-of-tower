@@ -33,7 +33,6 @@
 
 #game-start-display-wrapper {
   z-index: 3;
-  display: none;
   position: fixed;
   bottom: -100vh;
   left: 0;
@@ -79,21 +78,66 @@
 #in-game-menu-wrapper > div {
   cursor: pointer;
   background: #323232;
+  padding: .5rem;
 }
 
 #in-game-menu-wrapper > div > p {
   text-align: center;
+  border: 0;
   padding: 0;
   margin: .5rem;
 }
 
+#enemy-hand-visual,
+#user-hand-visual {
+  z-index: 1;
+  position: absolute;
+  transition: width .5s;
+  height: 1px;
+}
+
+#enemy-hand-visual {
+  top: calc(-15vw + 7.5vh);
+  left: 1rem;
+}
+
+#enemy-hand-visual > * {
+  margin: 0 .5rem;
+}
+
+#user-hand-visual {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+#enemy-hand-visual > *,
+#user-hand-visual > * {
+  cursor: help;
+  transition: transform .5s;
+  display: inline-block;
+  width: 9vw;
+}
+
+#user-hand-visual > * {
+  transform: translateX(100vw);
+}
+
+#enemy-hand-visual > * {
+  transform: translateX(-100vw);
+}
+
 #duel,
-#player-info {
+#player-info,
+#in-game-info,
+#in-game-card-info {
+  z-index: 2;
   width: 100vw;
   height: 100vh;
 }
 
-#player-info {
+#player-info,
+#in-game-info,
+#in-game-card-info {
   position: absolute;
   width: 100vw;
   max-width: 450px;
@@ -108,15 +152,19 @@
   animation-fill-mode: forwards !important;
 }
 
-#player-info.open {
-  animation: player-info-open .5s;
+#player-info.open,
+#in-game-info.open,
+#in-game-card-info.open {
+  animation: info-open .5s;
 }
 
-#player-info.close {
-  animation: player-info-close .5s;
+#player-info.close,
+#in-game-info.close,
+#in-game-card-info.close {
+  animation: info-close .5s;
 }
 
-@keyframes player-info-open {
+@keyframes info-open {
   0% {
     left: -120vw;
   }
@@ -125,7 +173,7 @@
   }
 }
 
-@keyframes player-info-close {
+@keyframes info-close {
   0% {
     left: 0;
   }
@@ -144,7 +192,7 @@
 #user-info {
   width: 90%;
   border-radius: 1rem;
-  background: #323232;
+  background: rgba(50, 50, 50, 0.9);
   margin: 1rem auto;
 }
 
@@ -167,6 +215,52 @@
   text-align: left;
   font-size: 1.5rem;
   font-weight: 800;
+}
+
+#in-game-card-info {
+  overflow-y: scroll;
+}
+
+#in-game-card-info .padding {
+  height: 7.5rem;
+}
+
+#in-game-card-info > div {
+  border-bottom: 3px solid #323232;
+  padding: .5rem;
+}
+
+#in-game-card-info .card-image {
+  width: 70%;
+  margin: 0 auto 1rem auto;
+  border: 0;
+}
+
+#in-game-card-info .monster-zone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3px;
+  padding: 0;
+  background: #323232;
+}
+
+#in-game-card-info .card-name {
+  font-weight: 800;
+}
+
+#in-game-card-info .card-hp,
+#in-game-card-info .card-atk {
+  text-align: center;
+  font-weight: 800;
+  padding: 1rem;
+}
+
+#in-game-card-info .card-hp {
+  background: #ff5d32;
+}
+
+#in-game-card-info .card-atk {
+  background: #328aff;
 }
 
 #user-dice,

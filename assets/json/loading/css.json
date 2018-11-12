@@ -3,6 +3,8 @@
   "assets/css/content.css",
   "assets/css/master.css",
   "assets/css/duel.css",
+  "assets/css/duel_pc.css",
+  "assets/css/duel_mobile.css",
   "assets/css/button.css",
   "assets/css/form.css",
   "assets/css/main.css",
