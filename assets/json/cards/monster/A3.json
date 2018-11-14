@@ -7,6 +7,6 @@
   "atk": 2,
   "cost": 4,
   "isEffectExist": true,
-  "effectExplain": "$이 카드의 공격력은 필드 위에 존재하는 짐승 종족 몬스터의 수만큼 올린다.",
+  "effectExplain": "$지속효과: [이 카드의 공격력은 필드 위에 존재하는 '짐승' 종족 몬스터의 수만큼 올린다.]",
   "rare": "R"
 }

@@ -2,7 +2,7 @@
   "cardType": "monster",
   "name": "워치맨",
   "monsterType": "기계",
-  "explain": "정해진 시간마다 소음을 일으킨다.시끄럽다.",
+  "explain": "정해진 시간마다 소음을 일으킨다. 시끄럽다.",
   "hp": 2,
   "atk": 1,
   "cost": 2,

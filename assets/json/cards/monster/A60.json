@@ -7,6 +7,6 @@
   "atk": 4,
   "cost": 4,
   "isEffectExist": true,
-  "effectExplain": "$이 카드는 효과에 의해 파괴되지 않는다.",
+  "effectExplain": "$지속효과: [이 카드는 효과에 의해 파괴되지 않는다.]",
   "rare": "L"
 }

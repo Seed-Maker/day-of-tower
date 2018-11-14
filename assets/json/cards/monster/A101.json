@@ -7,6 +7,6 @@
   "atk": 45,
   "cost": 60,
   "isEffectExist": true,
-  "effectExplain": "$이 카드는 다른 카드의 효과를 받지 않는다.",
+  "effectExplain": "$지속효과: [이 카드는 다른 카드의 효과를 받지 않는다.]",
   "rare": "E"
 }

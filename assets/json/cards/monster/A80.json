@@ -7,6 +7,6 @@
   "atk": 5,
   "cost": 18,
   "isEffectExist": true,
-  "effectExplain": "$자신의 필드에서 몬스터 2장을 파괴한 뒤 소환한다.",
+  "effectExplain": "$지속효과: [자신의 필드에서 몬스터 2장을 파괴한 뒤 소환한다.]",
   "rare": "R"
 }

@@ -7,6 +7,6 @@
   "atk": 3,
   "cost": 5,
   "isEffectExist": true,
-  "effectExplain": "$8LP를 지불하고 상대 필드의 몬스터 1장의 체력 1을 감소시킨다.",
+  "effectExplain": "$8LP를 지불하고 발동한다: [상대 필드의 몬스터 한 마리의 체력 1을 감소시킨다.]",
   "rare": "C"
 }

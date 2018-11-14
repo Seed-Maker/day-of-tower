@@ -7,6 +7,6 @@
   "atk": 2,
   "cost": 4,
   "isEffectExist": true,
-  "effectExplain": "$이 카드가 소환에 성공했을 때 필드에 지속마법 '도토리숲'을 발동한다.",
+  "effectExplain": "$이 카드가 소환에 성공했을 때 발동한다: [필드에 지속마법 '도토리숲'을 발동한다.]",
   "rare": "R"
 }

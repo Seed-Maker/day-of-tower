@@ -7,6 +7,6 @@
   "atk": 2,
   "cost": 8,
   "isEffectExist": true,
-  "effectExplain": "$이 카드가 소환에 성공했을 때 이카드의 공격력을 2 감소시킨다.",
+  "effectExplain": "$이 카드가 소환에 성공했을 때 이 카드의 공격력을 2 감소시킨다.",
   "rare": "E"
 }

@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "창기사'칼루프'",
+  "monsterType": "사람",
+  "explain": "긴 창을 다루는 기사이다. 매우 날카로운 창으로 적을 꿰뚫는다.",
+  "hp": 4,
+  "atk": 4,
+  "cost": 6,
+  "isEffectExist": false,
+  "rare": "C"
+}
