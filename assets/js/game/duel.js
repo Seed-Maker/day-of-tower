@@ -32,15 +32,8 @@ game.start = async (user, enemy) => {
   $('#user-profile-image').src = user.profileImage.src;
   $('#enemy-profile-image').src = enemy.profileImage.src;
 
-  Array.from($$(`
-    #user-name,
-    #in-game-info-user-name
-  `)).forEach(elem => elem.innerHTML = user.name);
-
-  Array.from($$(`
-    #enemy-name,
-    #in-game-info-enemy-name
-  `)).forEach(elem => elem.innerHTML = enemy.name);
+  $('#user-name').innerHTML = user.name;
+  $('#enemy-name').innerHTML = enemy.name;
 
   Array.from($$(`
     #enemy-hand-visual,
@@ -53,22 +46,13 @@ game.start = async (user, enemy) => {
     elem.innerHTML = '';
   });
 
-  Array.from($$(`
-    #in-game-info-enemy-hand,
-    #in-game-info-enemy-deck,
-    #in-game-info-enemy-LP,
-    #in-game-info-user-hand,
-    #in-game-info-user-deck,
-    #in-game-info-user-LP
-  `)).forEach(elem => {
-    elem.innerHTML = 0;
-  });
+  game.displayGameData();
 
-  $('#player-info').className = 'open';
+  $('#game-info').className = 'open';
 
   await game.displayGameStartLogo();
 
-  $('#player-info').className = 'close';
+  $('#game-info').className = 'close';
 
   while (enemyDice === userDice) {
     // userDice = game.throwDice();
@@ -97,6 +81,13 @@ game.start = async (user, enemy) => {
 
   user.deck.shuffle();
   enemy.deck.shuffle();
+
+  Array.from($$(`
+    #user-hand-visual,
+    #user-hand-visual-display-wrapper
+  `)).forEach(elem => {
+    elem.className = 'open';
+  });
 
   for (let i = 0; i < FIRST_HAND_SIZE; i++) {
     let card = {};
@@ -162,13 +153,12 @@ game.startTurn = async function (player) {
 
   game.displayGameData();
   let dice = game.throwDice();
-  game[player].lp += dice;
-
-  game.displayGameData();
   await (player === "user"?
     game.throwDiceAnime(dice) :
     game.throwDiceAnime(0, dice)
   );
+  game[player].lp += dice;
+  game.displayGameData();
   await (player === "user"? game.say(`
     ${dice}LP를 회복합니다.
   `) : wait(500));
@@ -203,20 +193,45 @@ game.displayCardData = async cardCode => {
       card = await game.Card.load(cardCode);
 
   image.innerHTML = '';
+  axplain.innerHTML = '';
   name.innerHTML = card.name;
   hp.innerHTML = `HP: ${card.hp}`;
   atk.innerHTML = `ATK: ${card.atk}`;
   cost.innerHTML = `필요 LP: ${card.cost}`;
-  axplain.innerHTML = `${card.explain}`;
+
+  if (card.effectExplain) {
+    let html = '',
+        list = card.effectExplain.trim().split('$');
+
+    list.map(
+      str => str.trim()
+    ).filter(
+      a => !!a
+    ).forEach(effect => {
+      html += '<div class="effect">'
+            + effect
+              .replace('[', '<div class="inner-effect">')
+              .replace(']', '</div>')
+            + '</div>';
+    });
+
+    axplain.innerHTML += html;
+  }
 
   switch (card.cardType) {
     case 'monster':
-      hp.style.display =
-      atk.style.display = 'block';
+      axplain.innerHTML = `${
+        card.explain +
+        (card.effectExplain?'<hr>':'') +
+        axplain.innerHTML
+      }`;
+      $('#in-game-card-info .monster-zone')
+      .style.display = 'grid';
       break;
+
     case 'magic':
-      hp.style.display =
-      atk.style.display = 'none';
+      $('#in-game-card-info .monster-zone')
+      .style.display = 'none';
       break;
   }
 

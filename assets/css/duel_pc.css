@@ -1,38 +1,139 @@
-#enemy-zone,
-#user-zone {
-  position: absolute;
-  left: 5vw;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 2vw;
-  width: 90vw;
-  max-width: 1200px;
-}
-
-@media (max-width: 700px) {
+@media (min-width: 900px) {
   #enemy-zone,
   #user-zone {
-    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    left: 5vw;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 2vw;
+    width: 90vw;
+    max-width: 1200px;
   }
-}
 
-#enemy-zone {
-  top: 7.5vh;
-}
+  #enemy-zone {
+    top: 7.5vh;
+  }
 
-#user-zone {
-  bottom: calc(3rem + 7.5vh);
-}
+  #user-zone {
+    bottom: calc(3rem + 7.5vh);
+  }
 
-#enemy-zone > div,
-#user-zone > div {
-  width: 100%;
-  height: 21.25vw;
-  border-radius: .5rem;
-  background: rgba(255, 255, 255, 0.75);
-}
+  #enemy-zone > div,
+  #user-zone > div {
+    width: 100%;
+    height: 21.25vw;
+  }
 
-#enemy-zone > div.magic,
-#user-zone > div.magic {
-  background: rgba(125, 125, 125, 0.75);
+  #enemy-hand-visual,
+  #user-hand-visual {
+    z-index: 4;
+    position: absolute;
+    transition: width .5s;
+    height: 1px;
+  }
+
+  #enemy-hand-visual {
+    top: calc(-15vw + 7.5vh);
+    left: 1rem;
+    animation-fill-mode: forwards !important;
+  }
+
+  #enemy-hand-visual.open {
+    animation: enemy-hand-open .33s;
+  }
+
+  #enemy-hand-visual.close {
+    animation: enemy-hand-close .33s;
+  }
+
+  @keyframes enemy-hand-open {
+    0% {
+      top: calc(-15vw + 3vh);
+    }
+    100% {
+      top: calc(-15vw + 7.5vh);
+    }
+  }
+
+  @keyframes enemy-hand-close {
+    0% {
+      top: calc(-15vw + 7.5vh);
+    }
+    100% {
+      top: calc(-15vw + 3vh);
+    }
+  }
+
+  #enemy-hand-visual > * {
+    margin: 0 .5rem;
+  }
+
+  #user-hand-visual {
+    bottom: -100vh;
+    right: 1rem;
+    animation-fill-mode: both !important;
+  }
+
+  #user-hand-visual.open {
+    animation: user-hand-open .33s;
+  }
+
+  #user-hand-visual.close {
+    animation: user-hand-close .33s;
+  }
+
+  @keyframes user-hand-open {
+    0% {
+      bottom: -50vh;
+    }
+    100% {
+      bottom: 1rem;
+    }
+  }
+
+  @keyframes user-hand-close {
+    0% {
+      bottom: 1rem;
+    }
+    100% {
+      bottom: -50vh;
+    }
+  }
+
+  #user-hand-visual-display-wrapper {
+    transition: background .5s;
+  }
+
+  #user-hand-visual-display-wrapper.open {
+    cursor: pointer;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(73, 73, 73, 0.9);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+  }
+
+  #user-hand-visual-display-wrapper.close {
+    display: none;
+  }
+
+  #enemy-hand-visual > *,
+  #user-hand-visual > * {
+    cursor: help;
+    transition: transform .5s;
+    display: inline-block;
+    width: 9vw;
+  }
+
+  #user-hand-visual > * {
+    transform: translateX(100vw);
+  }
+
+  #enemy-hand-visual > * {
+    transform: translateX(-100vw);
+  }
 }

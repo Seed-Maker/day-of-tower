@@ -13,6 +13,8 @@
     </section>
 
     <div id=user-hand-visual></div>
+    <div id=user-hand-visual-display-wrapper></div>
+
     <section id=user-zone>
       <div class="monster"></div>
       <div class="monster"></div>
@@ -25,25 +27,35 @@
 
   <div id=in-game-menu>
     <div id=in-game-menu-wrapper>
-      <div id=in-game-menu-enemy>
-        <p>상대 정보</p>
+      <div id=in-game-menu-game>
+        <p>게임 정보</p>
       </div>
       <div id=in-game-menu-card>
         <p>카드 정보</p>
       </div>
-      <div id=in-game-menu-game>
-        <p>게임 정보</p>
+      <div id=in-game-menu-hand>
+        <p>패</p>
       </div>
     </div>
     <div class="apple-safe-area-inset-bottom"></div>
   </div>
 
-  <div id=player-info>
+  <div id=game-info>
     <div id=enemy-info>
       <img id=enemy-profile-image class="profile" alt="적군 이미지">
       <p id=enemy-name>???</p>
     </div>
-    <a id=player-info-close-btn class="black button">닫기</a>
+    <div class=player-info>
+      <p>패: <span id=in-game-info-enemy-hand></span>장</p>
+      <p>덱: <span id=in-game-info-enemy-deck></span>장 남음</p>
+      <p>LP: <span id=in-game-info-enemy-LP></span></p>
+    </div>
+    <a id=game-info-close-btn class="black button">닫기</a>
+    <div class=player-info>
+      <p>패: <span id=in-game-info-user-hand></span>장</p>
+      <p>덱: <span id=in-game-info-user-deck></span>장 남음</p>
+      <p>LP: <span id=in-game-info-user-LP></span></p>
+    </div>
     <div id=user-info>
       <img id=user-profile-image class="profile" alt="나의 이미지">
       <p id=user-name>???</p>
@@ -54,7 +66,14 @@
     <div class="card-image"></div>
     <a id=in-game-card-info-close-btn class="black button">닫기</a>
     <div class="card-name"></div>
-    <div class="card-cost"></div>
+    <div class="card-cost">
+      <p>
+        <b>
+          확인하고 싶은 카드를 클릭하면
+          정보가 이곳에 나타납니다.
+        </b>
+      </p>
+    </div>
     <div class="monster-zone">
       <div class="card-hp"></div>
       <div class="card-atk"></div>
@@ -62,22 +81,6 @@
     <div class="card-explain"></div>
     <div class="card-button"></div>
     <div class="padding"></div>
-  </div>
-
-  <div id=in-game-info>
-    <div>
-      <p id=in-game-info-enemy-name class=title>???</p>
-      <p>패: <span id=in-game-info-enemy-hand></span>장</p>
-      <p>덱: <span id=in-game-info-enemy-deck></span>장 남음</p>
-      <p>LP: <span id=in-game-info-enemy-LP></span></p>
-    </div>
-    <a id=in-game-info-close-btn class="black button">닫기</a>
-    <div>
-      <p id=in-game-info-user-name class=title>???</p>
-      <p>패: <span id=in-game-info-user-hand></span>장</p>
-      <p>덱: <span id=in-game-info-user-deck></span>장 남음</p>
-      <p>LP: <span id=in-game-info-user-LP></span></p>
-    </div>
   </div>
 </div>
 

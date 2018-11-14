@@ -55,7 +55,19 @@
   }
 }
 
+#enemy-zone > div,
+#user-zone > div {
+  border-radius: .5rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+#enemy-zone > div.magic,
+#user-zone > div.magic {
+  background: rgba(125, 125, 125, 0.75);
+}
+
 #in-game-menu {
+  z-index: 1;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -88,62 +100,23 @@
   margin: .5rem;
 }
 
-#enemy-hand-visual,
-#user-hand-visual {
-  z-index: 1;
-  position: absolute;
-  transition: width .5s;
-  height: 1px;
-}
-
-#enemy-hand-visual {
-  top: calc(-15vw + 7.5vh);
-  left: 1rem;
-}
-
-#enemy-hand-visual > * {
-  margin: 0 .5rem;
-}
-
-#user-hand-visual {
-  bottom: 1rem;
-  right: 1rem;
-}
-
-#enemy-hand-visual > *,
-#user-hand-visual > * {
-  cursor: help;
-  transition: transform .5s;
-  display: inline-block;
-  width: 9vw;
-}
-
-#user-hand-visual > * {
-  transform: translateX(100vw);
-}
-
-#enemy-hand-visual > * {
-  transform: translateX(-100vw);
-}
-
 #duel,
-#player-info,
-#in-game-info,
+#game-info,
 #in-game-card-info {
-  z-index: 2;
+  z-index: 6;
   width: 100vw;
   height: 100vh;
 }
 
-#player-info,
-#in-game-info,
+#game-info,
 #in-game-card-info {
   position: absolute;
+  overflow-y: scroll;
   width: 100vw;
   max-width: 450px;
   top: 0;
   left: -200vw;
-  padding-top: 3rem;
+  padding: 3rem 0;
   border-right: .25rem solid #323232;
   background: rgba(85, 85, 85, 0.7);
   backdrop-filter: blur(40px);
@@ -152,14 +125,12 @@
   animation-fill-mode: forwards !important;
 }
 
-#player-info.open,
-#in-game-info.open,
+#game-info.open,
 #in-game-card-info.open {
   animation: info-open .5s;
 }
 
-#player-info.close,
-#in-game-info.close,
+#game-info.close,
 #in-game-card-info.close {
   animation: info-close .5s;
 }
@@ -182,18 +153,29 @@
   }
 }
 
-#player-info-close-btn {
+#game-info-close-btn {
   width: 90%;
   max-width: 100vw;
   margin: auto;
 }
 
+#game-info > .player-info > p {
+  margin: 0;
+  padding: .5rem 1rem;
+}
+
 #enemy-info,
-#user-info {
+#user-info,
+#game-info > .player-info {
   width: 90%;
+  margin: 1rem auto;
+  padding: .5rem 0;
   border-radius: 1rem;
   background: rgba(50, 50, 50, 0.9);
-  margin: 1rem auto;
+}
+
+#user-info {
+  margin-bottom: 15vh;
 }
 
 #user-profile-image,
@@ -217,12 +199,9 @@
   font-weight: 800;
 }
 
-#in-game-card-info {
-  overflow-y: scroll;
-}
-
 #in-game-card-info .padding {
   height: 7.5rem;
+  border: 0;
 }
 
 #in-game-card-info > div {
@@ -242,6 +221,18 @@
   grid-gap: 3px;
   padding: 0;
   background: #323232;
+}
+
+#in-game-card-info .card-explain .effect:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+#in-game-card-info .card-explain .inner-effect {
+  padding: 1rem;
+  margin: .5rem auto;
+  border-radius: .5rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
 }
 
 #in-game-card-info .card-name {

@@ -75,7 +75,11 @@ game.Card = class {
     const ILLUST_START_X = 70,
           ILLUST_START_Y = 18,
           ILLUST_WIDTH = 359,
-          ILLUST_HEIGHT = 359;
+          ILLUST_HEIGHT = 359,
+          COORD = [
+            ILLUST_START_X, ILLUST_START_Y,
+            ILLUST_WIDTH, ILLUST_HEIGHT
+          ];
 
     div.appendChild(canvas);
     canvas.width = cw;
@@ -101,23 +105,16 @@ game.Card = class {
     // }
 
     frame = await loading.loadImage(
-      `${imagePath}card_frame/${this.isEffectExist?'effect':'normal'}_monster.png`
+      `${imagePath}card_frame/${
+        this.isEffectExist?'effect':'normal'
+      }_monster.png`
     );
 
     ctx.drawImage(frame, 0, 0, cw, ch);
-    ctx.fillRect(
-      ILLUST_START_X,
-      ILLUST_START_Y,
-      ILLUST_WIDTH,
-      ILLUST_HEIGHT
-    );
-    ctx.drawImage(
-      illust,
-      ILLUST_START_X,
-      ILLUST_START_Y,
-      ILLUST_WIDTH,
-      ILLUST_HEIGHT
-    );
+    ctx.fillRect(...COORD);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.fillRect(...COORD);
+    await ctx.drawImageByPixel(illust, ...COORD);
 
     ctx.fillStyle = 'white';
     ctx.font = "27px Arial";

@@ -1,0 +1,119 @@
+@media (max-width: 899px) {
+  #enemy-zone,
+  #user-zone {
+    position: absolute;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    left: 5vw;
+    width: 90vw;
+    padding: 1rem 2rem;
+    background: rgba(41, 41, 41, 0.6);
+  }
+
+  #enemy-zone {
+    top: 2rem;
+  }
+
+  #user-zone {
+    bottom: 6rem;
+  }
+
+  #enemy-zone > div,
+  #user-zone > div {
+    display: inline-block;
+    width: 30vw;
+    height: 48vw;
+    border: 3px solid #323232;
+    margin: 0 .5rem;
+  }
+
+  #enemy-hand-visual {
+    display: none;
+  }
+
+  #user-hand-visual {
+    z-index: 2;
+    position: absolute;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100vw !important;
+    max-width: 450px;
+    height: 100vh !important;
+    top: 0;
+    left: -200vw;
+    padding: 3rem 0;
+    border-right: .25rem solid #323232;
+    background: rgba(85, 85, 85, 0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    color: white;
+    animation-fill-mode: forwards !important;
+  }
+
+  #user-hand-visual > div {
+    display: inline-block;
+    width: 70vw;
+    margin: 0 1.5rem;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  #user-hand-visual.open {
+    animation: info-open .5s;
+  }
+
+  #user-hand-visual.close {
+    animation: info-close .5s;
+  }
+
+  #user-hand-visual-display-wrapper {
+    z-index: 5;
+    position: fixed;
+    left: 0;
+    bottom: -50vh;
+    width: 100vw;
+    max-width: 450px;
+    height: 3rem;
+    padding: 1.5rem 0;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align: center;
+    background: #323232;
+    color: white;
+    font-weight: 800;
+    animation-fill-mode: forwards !important;
+  }
+
+  #user-hand-visual-display-wrapper::after {
+    content: "닫기";
+  }
+
+  #user-hand-visual-display-wrapper.open {
+    animation: user-hand-visual-display-wrapper-open .33s;
+  }
+
+  #user-hand-visual-display-wrapper.close {
+    animation: user-hand-visual-display-wrapper-close .33s;
+  }
+
+  @keyframes user-hand-visual-display-wrapper-open {
+    0% {
+      bottom: -50vh;
+    }
+    100% {
+      bottom: 0;
+    }
+  }
+
+  @keyframes user-hand-visual-display-wrapper-close {
+    0% {
+      bottom: 0;
+    }
+    100% {
+      bottom: -50vh;
+    }
+  }
+}

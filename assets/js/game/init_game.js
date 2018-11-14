@@ -43,8 +43,7 @@ loading.init().then(async () => {
       return function () {
         let isOpen = ($(`#${id}`).className === 'open');
         Array.from($$(`
-          #player-info,
-          #in-game-info,
+          #game-info,
           #in-game-card-info
         `)).forEach(elem => {
           if (elem.className === "open")
@@ -81,23 +80,38 @@ loading.init().then(async () => {
     window.addEventListener('resize', resizeEvent, false);
     setTimeout(resizeEvent, 1000);
 
-    $('#in-game-menu-enemy').onclick =
-    getInfoWindowOpenFunc('player-info');
+    $('#in-game-menu-game').onclick =
+    getInfoWindowOpenFunc('game-info');
 
     $('#in-game-menu-card').onclick =
     getInfoWindowOpenFunc('in-game-card-info');
 
-    $('#in-game-menu-game').onclick =
-    getInfoWindowOpenFunc('in-game-info');
+    $('#in-game-menu-hand').onclick = function () {
+      let isOpen = $('#user-hand-visual').className === 'open';
+      Array.from($$(`
+        #user-hand-visual,
+        #enemy-hand-visual,
+        #user-hand-visual-display-wrapper
+      `)).forEach(elem => {
+        elem.className = isOpen? 'close' : 'open';
+      });
+    }
+
+    $('#game-info-close-btn').onclick =
+    getInfoWindowCloseFunc('game-info');
 
     $('#in-game-card-info-close-btn').onclick =
     getInfoWindowCloseFunc('in-game-card-info');
 
-    $('#player-info-close-btn').onclick =
-    getInfoWindowCloseFunc('player-info');
-
-    $('#in-game-info-close-btn').onclick =
-    getInfoWindowCloseFunc('in-game-info');
+    $('#user-hand-visual-display-wrapper').onclick = function () {
+      Array.from($$(`
+        #user-hand-visual,
+        #enemy-hand-visual,
+        #user-hand-visual-display-wrapper
+      `)).forEach(elem => {
+        elem.className = 'close';
+      });
+    }
 
     $('#game-version').innerHTML = game.version;
 

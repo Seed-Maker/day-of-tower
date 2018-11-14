@@ -170,7 +170,7 @@ game.cardAnimeDrawHandler = async (player, card) => {
   html.setAttribute('code', card.code);
 
   if (player === "user") {
-    html.onclick = function () {
+    html.onclick = function (event) {
       let code = this.getAttribute('code');
       game.displayCardData(code);
       if ($('#in-game-card-info').className != 'open')
@@ -185,6 +185,15 @@ game.cardAnimeDrawHandler = async (player, card) => {
 
   Array
   .from(target.childNodes)
+  .filter(
+    elem => [
+      'canvas',
+      'div'
+    ].includes(
+      String(elem.tagName)
+      .toLowerCase()
+    )
+  )
   .forEach((elem, i) => {
     const length = target.childNodes.length;
     const sign = (player === "user"? 1 : -1);

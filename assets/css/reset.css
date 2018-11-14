@@ -26,6 +26,13 @@ iframe {
   width: 100%;
 }
 
+hr {
+  border: 0;
+  margin: .5rem auto;
+  padding: 0;
+  border-bottom: 2px solid #323232;
+}
+
 a {
   color: #446bf6;
 }
