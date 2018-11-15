@@ -1,5 +1,5 @@
 window.game = {
-  version: "v0.20.4.1-Alpha",
+  version: "v0.20.4.2-Alpha",
   player: {
     name: "",
     deck: []
