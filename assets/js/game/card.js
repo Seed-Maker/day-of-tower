@@ -72,15 +72,6 @@ game.Card = class {
         ch = 800,
         bandColor;
 
-    const ILLUST_START_X = 70,
-          ILLUST_START_Y = 18,
-          ILLUST_WIDTH = 359,
-          ILLUST_HEIGHT = 359,
-          COORD = [
-            ILLUST_START_X, ILLUST_START_Y,
-            ILLUST_WIDTH, ILLUST_HEIGHT
-          ];
-
     div.appendChild(canvas);
     canvas.width = cw;
     canvas.height = ch;
@@ -89,48 +80,96 @@ game.Card = class {
       `${imagePath}card_illust/${this.cardType}/${this.code}.png`
     );
 
-    // switch (this.cardType) {
-    //   case "magic":
-    //
-    //     break;
-    //
-    //   case "monster":
-    //     frame = await loading.loadImage(
-    //       `${imagePath}card_frame/${this.isEffectExist?'effect':'normal'}_monster.png`
-    //     );
-    //     break;
-    //
-    //   default:
-    //     throw new Error("unknown card type.");
-    // }
+    let illustStartX,
+        illustStartY,
+        nameSize,
+        nameColor,
+        nameX, nameY,
+        costX, costY,
+        illustWitdth = 359,
+        illustHeight = 359,
+        coord = [];
 
-    frame = await loading.loadImage(
-      `${imagePath}card_frame/${
-        this.isEffectExist?'effect':'normal'
-      }_monster.png`
-    );
+    switch (this.cardType) {
+      case "magic": {
+        illustStartX = 70;
+        illustStartY = 120;
+        illustWitdth = 359;
+        illustHeight = 359;
+        nameX = 120;
+        nameY = 54;
+        nameSize = 30;
+        nameColor = "black";
+        costX = 230;
+        costY = 510;
+        coord = [
+          illustStartX, illustStartY,
+          illustWitdth, illustHeight
+        ];
+        frame = await loading.loadImage(
+          `${imagePath}card_frame/magic.png`
+        );
+        break;
+      }
+
+      case "monster": {
+        illustStartX = 70;
+        illustStartY = 18;
+        illustWitdth = 359;
+        illustHeight = 359;
+        nameSize = 27;
+        nameColor = this.isEffectExist? "black" : "white";
+        nameX = 28;
+        nameY = 400;
+        costX = 232;
+        costY = 483;
+        coord = [
+          illustStartX, illustStartY,
+          illustWitdth, illustHeight
+        ];
+        frame = await loading.loadImage(
+          `${imagePath}card_frame/${this.isEffectExist?'effect':'normal'}_monster.png`
+        );
+        break;
+      }
+
+      default:
+        throw new Error("unknown card type.");
+    }
 
     ctx.drawImage(frame, 0, 0, cw, ch);
-    ctx.fillRect(...COORD);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-    ctx.fillRect(...COORD);
-    await ctx.drawImageByPixel(illust, ...COORD);
 
-    ctx.fillStyle = 'white';
-    ctx.font = "27px Arial";
+    if (this.cardType === "monster") {
+      await ctx.drawImageByPixel(
+        await loading.loadImage(
+          `${imagePath}card_background/${this.monsterType}.png`
+        ),
+        ...coord
+      );
+    }
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+    ctx.fillRect(...coord);
+    await ctx.drawImageByPixel(illust, ...coord);
+
+    ctx.fillStyle = nameColor;
+    ctx.font = `${nameSize}px Arial`;
     ctx.textBaseline = 'middle';
-    ctx.fillText(this.name, 28, 400);
+    ctx.fillText(this.name, nameX, nameY);
 
-    ctx.fillStyle = 'black';
-    ctx.fillText(`${this.monsterType}족`, 28, 440);
+    if (this.cardType === "monster") {
+      ctx.fillStyle = 'black';
+      ctx.fillText(`${this.monsterType}족`, 28, 440);
 
-    ctx.fillStyle = 'white';
-    ctx.font = "30px Arial";
-    ctx.fillText(`HP: ${this.hp}`, 28, 483);
-    ctx.fillText(`ATK: ${this.atk}`, 300, 483);
+      ctx.fillStyle = 'white';
+      ctx.font = "30px Arial";
+      ctx.fillText(`HP: ${this.hp}`, 28, 483);
+      ctx.fillText(`ATK: ${this.atk}`, 300, 483);
+    }
 
+    ctx.fillStyle = "white";
     ctx.font = "33px Arial";
-    ctx.fillText(`${this.cost}`, 232, 483);
+    ctx.fillText(`${this.cost}`, costX, costY);
 
     switch (this.rare.toUpperCase()) {
       case "C": bandColor = '#613e3e'; break;
@@ -181,6 +220,7 @@ game.MonsterCard = class extends game.Card {
     super(card);
     this.cardType = "monster";
 
+    this.isEffectExist = card.isEffectExist;
     this.hp = card.hp;
     this.atk = card.atk;
     this.monsterType = card.monsterType;

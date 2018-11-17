@@ -23,8 +23,8 @@ game.start = async (user, enemy) => {
   game.user = user;
   game.enemy = enemy;
 
-  user.lp = FIRST_LP;
-  enemy.lp = FIRST_LP;
+  user.luckyPoint = FIRST_LP;
+  enemy.luckyPoint = FIRST_LP;
 
   user.hand = new game.Deck;
   enemy.hand = new game.Deck;
@@ -128,8 +128,8 @@ game.start = async (user, enemy) => {
     elem.innerHTML = FIRST_HAND_SIZE;
   });
 
-  $('#in-game-info-user-LP').innerHTML = user.lp;
-  $('#in-game-info-enemy-LP').innerHTML = enemy.lp;
+  $('#in-game-info-user-LP').innerHTML = user.luckyPoint;
+  $('#in-game-info-enemy-LP').innerHTML = enemy.luckyPoint;
   $('#in-game-info-user-deck').innerHTML = user.deck.length;
   $('#in-game-info-enemy-deck').innerHTML = enemy.deck.length;
 
@@ -146,8 +146,8 @@ game.displayGameData = function () {
   let user = game.user,
       enemy = game.enemy;
 
-  $('#in-game-info-user-LP').innerHTML = user.lp;
-  $('#in-game-info-enemy-LP').innerHTML = enemy.lp;
+  $('#in-game-info-user-LP').innerHTML = user.luckyPoint;
+  $('#in-game-info-enemy-LP').innerHTML = enemy.luckyPoint;
   $('#in-game-info-user-deck').innerHTML = user.deck.length;
   $('#in-game-info-enemy-deck').innerHTML = enemy.deck.length;
   $('#in-game-info-user-hand').innerHTML = user.hand.length;
@@ -161,19 +161,15 @@ game.displayGameData = function () {
 */
 game.startTurn = async function (player) {
   game.displayGameData();
-  game.checkCardEventAll('turn-start');
+  await game.checkCardEventAll('turn-start');
 
   await (player === "user"? game.say(`
     당신의 턴입니다. 카드를 드로우하고 주사위를 던집니다.
   `) : wait(1000));
 
-  game.displayGameData();
-  game.checkCardEventAll('turn-draw-start');
+  await game.checkCardEventAll('turn-draw-start');
 
-  game.displayGameData();
   await game.cardDrawAnimeHandler(player, game[player].draw());
-
-  game.displayGameData();
 
   let dice = game.throwDice(),
       animeData = {};
@@ -184,16 +180,16 @@ game.startTurn = async function (player) {
   );
 
   animeData[player] = {
-    before: game[player].lp,
-    after: game[player].lp += dice,
+    before: game[player].luckyPoint,
+    after: game[player].luckyPoint += dice,
   }
 
-  game.displayGameData();
-
-  await game.lpChangeAnimeHandler(animeData);
-  await (player === "user"? game.say(`
-    ${dice}LP를 회복합니다.
-  `) : wait(500));
+  await Promise.all([
+    game.lpChangeAnimeHandler(animeData),
+    (player === "user"? game.say(`
+      ${dice}LP를 회복합니다.
+    `) : Promise.resolve())
+  ]);
 }
 
 
@@ -241,21 +237,20 @@ game.displayCardData = async cardCode => {
   if (card.effectExplain) {
     let html = '';
 
-    card
-    .effectExplain
+    card.effectExplain
     .trim()
     .split('$')
     .map(
-      str => str.trim()
-    ).filter(
-      a => !!a
-    ).forEach(effect => {
-      html += '<div class="effect">'
-            + effect
+      str => str
+              .trim()
+              .escapeHTML()
               .replace('[', '<div class="inner-effect">')
               .replace(']', '</div>')
-            + '</div>';
-    });
+    ).filter(
+      a => !!a
+    ).forEach(effect =>
+      html += `<div class=effect>${effect}</div>`
+    );
 
     axplain.innerHTML += html;
   }

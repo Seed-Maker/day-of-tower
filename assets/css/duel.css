@@ -72,6 +72,8 @@
   position: fixed;
   top: 40vh;
   width: 50vw;
+  border-radius: 1rem;
+  font-weight: 800;
 }
 
 #enemy-lp-sign > p,
@@ -92,6 +94,8 @@
 #enemy-lp-sign {
   transition: left .5s;
   left: -50vw;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   background: #f26640;
   text-align: right;
 }
@@ -103,6 +107,8 @@
 #user-lp-sign {
   transition: right .5s;
   right: -50vw;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   background: #4076f2;
 }
 

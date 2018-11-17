@@ -26,6 +26,8 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
             SX = i * QUALITY,
             SY = k * QUALITY;
 
+      if (!pixel[3]) continue;
+
       let color = `rgb(${
         pixel[0]
       },${
@@ -33,9 +35,6 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
       },${
         pixel[2]
       })`;
-
-      if (color == 'rgb(0,0,0)')
-        continue;
 
       tempCtx.fillStyle = color;
       tempCtx.fillRect(SX, SY, QUALITY, QUALITY);
@@ -47,6 +46,8 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
     tempImg.onload = resolve();
     tempImg.onerror = reject();
   });
+
+  await wait(50);
 
   this.drawImage(tempImg, ...params);
 }

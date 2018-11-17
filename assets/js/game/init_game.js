@@ -1,6 +1,6 @@
 loading.init().then(async () => {
   function loadAssetsList(s) {
-    return ajax.fetchJSON(`assets/json/loading/${s}.json`);
+    return ajax.fetchJSON(`assets/json/loading/init/${s}.json`);
   }
 
   let htmlList = await loadAssetsList('html');

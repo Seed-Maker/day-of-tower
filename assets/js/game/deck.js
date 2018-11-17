@@ -91,7 +91,9 @@ game.Deck = class {
   *  @return {game.Card} 뽑은 카드.
   */
   draw() {
-    return this.list.pop();
+    let card = this.list.pop();
+    game.displayGameData();
+    return card;
   }
 
 
@@ -102,6 +104,7 @@ game.Deck = class {
   */
   append(card) {
     this.list.push(card);
+    game.displayGameData();
     return this.list.length;
   }
 
@@ -111,6 +114,7 @@ game.Deck = class {
   *  @return {String} 유효한 덱이 아닐 경우 그 이유.
   */
   isValid(getReason) {
+    const DECK_LIMIT = 5;
     let list = this.list,
         length = list.length,
         cardCount = {};
@@ -123,9 +127,9 @@ game.Deck = class {
       cardCount[code] = cardCount[code] || 0;
       cardCount[code]++;
 
-      if (cardCount[code] > 3) return (`
-        ${cardCount[code]}가 3장 초과로 포함되어있습니다.
-        같은 카드는 최대 3장까지만 넣을 수 있습니다.
+      if (cardCount[code] > DECK_LIMIT) return (`
+        ${cardCount[code]}가 ${DECK_LIMIT}장 초과로 포함되어있습니다.
+        같은 카드는 최대 ${DECK_LIMIT}장까지만 넣을 수 있습니다.
       `).trim();
     }
 

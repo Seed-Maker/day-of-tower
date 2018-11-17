@@ -219,38 +219,45 @@ game.cardDrawAnimeHandler = async (player, card) => {
 *  @param {Number} changes.user.after 플레이어의 변경 후 LP.
 *  @param {Number} changes.enemy.after 상대방의 변경 후 LP.
 */
-game.lpChangeAnimeHandler = async function (changes) {
-  let proms = [
-    'user', 'enemy'
-  ].map(async player => {
-    if (changes[player]) {
-      const steps = 10;
-      let transition = changes[player].after - changes[player].before,
-          display = $(`#${player}-lp-sign p.lp`);
+game.lpChangeAnimeHandler = async changes => {
+  let targets = [ 'user', 'enemy' ];
+  let proms = targets.map(async player => {
+    if (!changes[player]) return new Promise(() => {});
+    changes[player].after = Math.max(0, changes[player].after);
+    const steps = 10,
+          transition = changes[player].after - changes[player].before,
+          sign = ((transition > 0)? '+':'');
+    let display = $(`#${player}-lp-sign p.lp`);
 
-      $(`#${player}-lp-sign`).className = 'open';
-      display.innerHTML = changes[player].before;
+    $(`#${player}-lp-sign`).className = 'open';
+    display.innerHTML = `${changes[player].before} <br>(${
+      ((transition > 0)? '+':'-') + transition
+    })`;
 
-      await wait(500);
+    await wait(500);
 
-      for (let i = 0; i < steps; i++) {
-        await wait(50);
-        display.innerHTML = Math.floor(changes[player].before + transition / (steps - i));
-      }
-
-      await wait(1500);
-
-      $(`#${player}-lp-sign`).className = 'close';
-      await wait(500);
+    for (let i = 0; i < steps; i++) {
+      await wait(50);
+      const now = Math.floor(changes[player].before + transition / (steps - i));
+      display.innerHTML = `${now}<br>(${
+        sign + (changes[player].after - now)
+      })`;
     }
+
+    await wait(1500);
+
+    $(`#${player}-lp-sign`).className = 'close';
+    await wait(500);
   });
+
+  game.displayGameData();
 
   await Promise.race([
     ...proms,
-    ...['user', 'enemy'].map(
+    ...targets.map(
       p => new Promise(
         resolve => $(`#${p}-lp-sign`).onclick = () => {
-          ['user', 'enemy'].forEach(
+          targets.forEach(
             _p => $(`#${_p}-lp-sign`).className = 'close'
           );
           wait(500).then(resolve);

@@ -13,7 +13,7 @@ game.Player = class {
     this.profileImage = player.profileImage || new Image();
     this.deck = player.deck;
     this.hand = new game.Deck;
-    this.luckyPoint = player.luckyPoint || 10;
+    this._luckyPoint_ = player.luckyPoint || 10;
     this.crystal = player.crystal || new game.Crystal();
     this.isUseCrystal = false;
   }
@@ -30,24 +30,14 @@ game.Player = class {
   }
 
 
-  /**
-  *  @method game.useCrystal 크리스탈을 사용한다.
-  *  @return {Boolean} 크리스탈 사용 성공 여부.
-  */
-  useCrystal() {
-    if (this.isUseCrystal)
-      return false;
-
-    if (this.crystal.method())
-      return this.isUseCrystal = true;
+  get luckyPoint() {
+    return this._luckyPoint_;
   }
 
-
-  get isUseCrystal() {
-    return !!this._isUseCrystal_;
-  }
-
-  set isUseCrystal(val) {
-    return this._isUseCrystal_ = !!val;
+  set luckyPoint(val) {
+    val = Math.max(val, 0);
+    this._luckyPoint_ = val;
+    game.displayGameData();
+    return val;
   }
 }
