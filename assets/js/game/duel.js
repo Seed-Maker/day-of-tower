@@ -32,8 +32,19 @@ game.start = async (user, enemy) => {
   $('#user-profile-image').src = user.profileImage.src;
   $('#enemy-profile-image').src = enemy.profileImage.src;
 
-  $('#user-name').innerHTML = user.name;
-  $('#enemy-name').innerHTML = enemy.name;
+  Array.from($$(`
+    #user-name,
+    .user-name
+  `)).forEach(elem => {
+    elem.innerHTML = user.name;
+  });
+
+  Array.from($$(`
+    #enemy-name,
+    .enemy-name
+  `)).forEach(elem => {
+    elem.innerHTML = enemy.name;
+  });
 
   Array.from($$(`
     #enemy-hand-visual,
@@ -82,6 +93,17 @@ game.start = async (user, enemy) => {
   user.deck.shuffle();
   enemy.deck.shuffle();
 
+  await game.lpChangeAnimeHandler({
+    user: {
+      before: 0,
+      after: FIRST_LP
+    },
+    enemy: {
+      before: 0,
+      after: FIRST_LP
+    }
+  });
+
   Array.from($$(`
     #user-hand-visual,
     #user-hand-visual-display-wrapper
@@ -95,8 +117,8 @@ game.start = async (user, enemy) => {
     card.user = user.draw();
     card.enemy = enemy.draw();
 
-    await game.cardAnimeDrawHandler('user', card.user);
-    await game.cardAnimeDrawHandler('enemy', card.enemy);
+    await game.cardDrawAnimeHandler('user', card.user);
+    await game.cardDrawAnimeHandler('enemy', card.enemy);
   }
 
   Array.from($$(`
@@ -149,16 +171,26 @@ game.startTurn = async function (player) {
   game.checkCardEventAll('turn-draw-start');
 
   game.displayGameData();
-  await game.cardAnimeDrawHandler(player, game[player].draw());
+  await game.cardDrawAnimeHandler(player, game[player].draw());
 
   game.displayGameData();
-  let dice = game.throwDice();
+
+  let dice = game.throwDice(),
+      animeData = {};
+
   await (player === "user"?
     game.throwDiceAnime(dice) :
     game.throwDiceAnime(0, dice)
   );
-  game[player].lp += dice;
+
+  animeData[player] = {
+    before: game[player].lp,
+    after: game[player].lp += dice,
+  }
+
   game.displayGameData();
+
+  await game.lpChangeAnimeHandler(animeData);
   await (player === "user"? game.say(`
     ${dice}LP를 회복합니다.
   `) : wait(500));
@@ -192,18 +224,28 @@ game.displayCardData = async cardCode => {
       button = $('#in-game-card-info .card-button'),
       card = await game.Card.load(cardCode);
 
-  image.innerHTML = '';
   axplain.innerHTML = '';
   name.innerHTML = card.name;
   hp.innerHTML = `HP: ${card.hp}`;
   atk.innerHTML = `ATK: ${card.atk}`;
   cost.innerHTML = `필요 LP: ${card.cost}`;
 
-  if (card.effectExplain) {
-    let html = '',
-        list = card.effectExplain.trim().split('$');
+  if (image.querySelector('canvas')) {
+    image.querySelector('canvas').getContext(
+      await loading.loadImage('assets/image/duel/card_back.png'),
+      0, 0,
+      500, 800
+    );
+  }
 
-    list.map(
+  if (card.effectExplain) {
+    let html = '';
+
+    card
+    .effectExplain
+    .trim()
+    .split('$')
+    .map(
       str => str.trim()
     ).filter(
       a => !!a
@@ -236,6 +278,7 @@ game.displayCardData = async cardCode => {
   }
 
   let cardElem = await card.toHTML();
+  image.innerHTML = '';
   image.appendChild(cardElem);
   cardElem.style.boxShadow = '8px 8px 6px 4px rgba(0,0,0,0.5)';
 }

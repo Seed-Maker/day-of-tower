@@ -1,0 +1,19 @@
+#game-setting {
+  z-index: 99;
+  transition: left .5s;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  max-width: 450px;
+  height: 100vh;
+  background: white;
+}
+
+#game-setting.open {
+  left: 0;
+}
+
+#game-setting > div {
+
+}

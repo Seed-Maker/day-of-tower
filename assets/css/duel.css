@@ -66,6 +66,50 @@
   background: rgba(125, 125, 125, 0.75);
 }
 
+#enemy-lp-sign,
+#user-lp-sign {
+  z-index: 10;
+  position: fixed;
+  top: 40vh;
+  width: 50vw;
+}
+
+#enemy-lp-sign > p,
+#user-lp-sign > p {
+  margin: .25rem;
+}
+
+#enemy-lp-sign > p.lp,
+#user-lp-sign > p.lp {
+  font-size: 2rem;
+}
+
+#enemy-lp-sign > p.lp::before,
+#user-lp-sign > p.lp::before {
+  content: "LP: ";
+}
+
+#enemy-lp-sign {
+  transition: left .5s;
+  left: -50vw;
+  background: #f26640;
+  text-align: right;
+}
+
+#enemy-lp-sign.open {
+  left: 0;
+}
+
+#user-lp-sign {
+  transition: right .5s;
+  right: -50vw;
+  background: #4076f2;
+}
+
+#user-lp-sign.open {
+  right: 0;
+}
+
 #in-game-menu {
   z-index: 1;
   position: absolute;

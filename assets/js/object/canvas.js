@@ -22,8 +22,11 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
 
   for (let i = 0; i < IW; i++) {
     for (let k = 0; k < IH; k++) {
-      const pixel = getPixel(i+1, k+1);
-      let color = `rgba(${
+      const pixel = getPixel(i+1, k+1),
+            SX = i * QUALITY,
+            SY = k * QUALITY;
+
+      let color = `rgb(${
         pixel[0]
       },${
         pixel[1]
@@ -31,14 +34,10 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
         pixel[2]
       })`;
 
-      if (color == 'rgba(0,0,0)')
+      if (color == 'rgb(0,0,0)')
         continue;
 
       tempCtx.fillStyle = color;
-
-      const SX = i * QUALITY,
-            SY = k * QUALITY;
-
       tempCtx.fillRect(SX, SY, QUALITY, QUALITY);
     }
   }

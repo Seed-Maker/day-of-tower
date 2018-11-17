@@ -140,7 +140,7 @@ game.throwDiceAnime = (userDiceNumber, enemyDiceNumber) => {
 *  @param {String} player "enemy" 또는 "user"이며 드로우한 플레이어를 나타냄.
 *  @param {game.Card} card 드로우한 카드. 적의 드로우일 경우 정의하지 않는다.
 */
-game.cardAnimeDrawHandler = async (player, card) => {
+game.cardDrawAnimeHandler = async (player, card) => {
   let target = $(`#${player}-hand-visual`),
       html = await (
         (player === 'user' && card)?
@@ -150,6 +150,8 @@ game.cardAnimeDrawHandler = async (player, card) => {
 
   if (!target)
     throw new Error('unknown player identifier');
+
+  target.scrollTo(999999, 0);
 
   if (player === "enemy") {
     let canvas = document.createElement('canvas'),
@@ -166,7 +168,6 @@ game.cardAnimeDrawHandler = async (player, card) => {
   }
 
   target.appendChild(html);
-
   html.setAttribute('code', card.code);
 
   if (player === "user") {
@@ -185,13 +186,11 @@ game.cardAnimeDrawHandler = async (player, card) => {
 
   Array
   .from(target.childNodes)
-  .filter(
-    elem => [
+  .filter(elem => [
       'canvas',
       'div'
     ].includes(
-      String(elem.tagName)
-      .toLowerCase()
+      String(elem.tagName).toLowerCase()
     )
   )
   .forEach((elem, i) => {
@@ -207,4 +206,56 @@ game.cardAnimeDrawHandler = async (player, card) => {
     `;
   });
   await wait(50);
+}
+
+
+/**
+*  @method game.lpChangeAnimeHandler
+*  @param {Object} changes 변경점.
+*  @param {Object} changes.user 플레이어의 변경점.
+*  @param {Object} changes.enemy 상대방의 변경점.
+*  @param {Number} changes.user.before 플레이어의 변경 전 LP.
+*  @param {Number} changes.enemy.before 상대방의 변경 전 LP.
+*  @param {Number} changes.user.after 플레이어의 변경 후 LP.
+*  @param {Number} changes.enemy.after 상대방의 변경 후 LP.
+*/
+game.lpChangeAnimeHandler = async function (changes) {
+  let proms = [
+    'user', 'enemy'
+  ].map(async player => {
+    if (changes[player]) {
+      const steps = 10;
+      let transition = changes[player].after - changes[player].before,
+          display = $(`#${player}-lp-sign p.lp`);
+
+      $(`#${player}-lp-sign`).className = 'open';
+      display.innerHTML = changes[player].before;
+
+      await wait(500);
+
+      for (let i = 0; i < steps; i++) {
+        await wait(50);
+        display.innerHTML = Math.floor(changes[player].before + transition / (steps - i));
+      }
+
+      await wait(1500);
+
+      $(`#${player}-lp-sign`).className = 'close';
+      await wait(500);
+    }
+  });
+
+  await Promise.race([
+    ...proms,
+    ...['user', 'enemy'].map(
+      p => new Promise(
+        resolve => $(`#${p}-lp-sign`).onclick = () => {
+          ['user', 'enemy'].forEach(
+            _p => $(`#${_p}-lp-sign`).className = 'close'
+          );
+          wait(500).then(resolve);
+        }
+      )
+    )
+  ]);
 }

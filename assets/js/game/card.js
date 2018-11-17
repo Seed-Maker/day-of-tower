@@ -127,7 +127,10 @@ game.Card = class {
     ctx.fillStyle = 'white';
     ctx.font = "30px Arial";
     ctx.fillText(`HP: ${this.hp}`, 28, 483);
-    ctx.fillText(`ATK: ${this.atk}`, 265, 483);
+    ctx.fillText(`ATK: ${this.atk}`, 300, 483);
+
+    ctx.font = "33px Arial";
+    ctx.fillText(`${this.cost}`, 232, 483);
 
     switch (this.rare.toUpperCase()) {
       case "C": bandColor = '#613e3e'; break;
@@ -138,7 +141,15 @@ game.Card = class {
     }
 
     ctx.fillStyle = bandColor;
-    ctx.fillRect(0, 759, cw, ch);
+    ctx.fillRect(0, 749, cw, ch);
+
+    let grd = ctx.createLinearGradient(0,0,170,0);
+
+    grd.addColorStop(0, 'rgba(0, 0, 0, 0.2)');
+    grd.addColorStop(1, 'rgba(255, 255, 255, 0.2)');
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 749, cw, ch);
 
     return div;
   }

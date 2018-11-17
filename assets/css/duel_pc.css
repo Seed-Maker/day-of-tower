@@ -113,8 +113,6 @@
     width: 100vw;
     height: 100vh;
     background: rgba(73, 73, 73, 0.9);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
   }
 
   #user-hand-visual-display-wrapper.close {

@@ -80,6 +80,14 @@ loading.init().then(async () => {
     window.addEventListener('resize', resizeEvent, false);
     setTimeout(resizeEvent, 1000);
 
+    $('#setting-open-btn').onclick = function () {
+      $('#game-setting').className = 'open';
+    }
+
+    $('#setting-close-btn').onclick = function () {
+      $('#game-setting').className = 'close';
+    }
+
     $('#in-game-menu-game').onclick =
     getInfoWindowOpenFunc('game-info');
 

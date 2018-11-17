@@ -58,6 +58,13 @@
     margin: 0 1.5rem;
     transition: none !important;
     transform: none !important;
+    animation: user-card-in .75s;
+  }
+
+  @keyframes user-card-in {
+    0% {
+      margin-left: 100px;
+    }
   }
 
   #user-hand-visual.open {
