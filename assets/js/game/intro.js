@@ -60,31 +60,31 @@ game.introStart = async () => {
 
   game.player.name = userName;
 
-  // await game.say("테스트용 게임 시작.");
-  //
-  // user = new game.Player({
-  //   name: userName,
-  //   profileImage: await loading.loadImage(
-  //     'assets/image/profile/iconmonstr-user-32-240.png'
-  //   ),
-  //   deck: await game.Deck.load('tutorial/enemy'),
-  //   crystal: 0
-  // });
-  //
-  // enemy = new game.Player({
-  //   name: "상대방",
-  //   profileImage: await loading.loadImage(
-  //     'assets/image/profile/iconmonstr-user-32-240.png'
-  //   ),
-  //   deck: await game.Deck.load('tutorial/user'),
-  //   crystal: 0
-  // });
-  //
-  // enemy.AI = {
-  //   selectTurn() {
-  //     return 1;
-  //   }
-  // };
-  //
-  // return game.start(user, enemy);
+  await game.say("테스트용 게임 시작.");
+
+  user = new game.Player({
+    name: userName,
+    profileImage: await loading.loadImage(
+      'assets/image/profile/iconmonstr-user-32-240.png'
+    ),
+    deck: await game.Deck.load('tutorial/enemy'),
+    crystal: 0
+  });
+
+  enemy = new game.Player({
+    name: "상대방",
+    profileImage: await loading.loadImage(
+      'assets/image/profile/iconmonstr-user-32-240.png'
+    ),
+    deck: await game.Deck.load('tutorial/user'),
+    crystal: 0
+  });
+
+  enemy.AI = {
+    selectTurn() {
+      return 1;
+    }
+  };
+
+  return game.start(user, enemy);
 }
