@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "드래곤 사냥꾼 '피오'",
+  "monsterType": "사람",
+  "explain": "드래곤을 사냥하는 길드의 부단장이다. 단장인 '메오'를 매우 존경한다고 길드원들에게 말하고 다닌다. 하지만 그녀는 자신조차 깨닫지 못한 틈에 그를 좋아하게 된다.",
+  "hp": 4,
+  "atk": 6,
+  "cost": 7,
+  "isEffectExist": false,
+  "rare": "C"
+}

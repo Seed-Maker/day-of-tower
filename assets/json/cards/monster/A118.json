@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "노래하는 그림자",
+  "monsterType": "고스트",
+  "explain": "열정적으로 마이크를 잡고 노래를 부르고 있지만 모습은 보이지 않습니다. 하지만 매우 아름다운 목소리를 가졌다는 것은 확실합니다.",
+  "hp": 1,
+  "atk": 2,
+  "cost": 2,
+  "isEffectExist": false,
+  "rare": "C"
+}

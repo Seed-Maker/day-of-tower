@@ -1,0 +1,11 @@
+{
+  "cardType": "monster",
+  "name": "드래곤 사냥꾼 '메오'",
+  "monsterType": "사람",
+  "explain": "드래곤을 사냥하는 길드의 단장이다. 길드원들 사이에서는 ",
+  "hp": 5,
+  "atk": 5,
+  "cost": 7,
+  "isEffectExist": false,
+  "rare": "C"
+}

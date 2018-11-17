@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "드래곤 사냥꾼 '아리온'",
+  "monsterType": "사람",
+  "explain": "드래곤을 사냥하는 길드의 신입 단원이다. 드래곤 사냥에 있어서 중요한 드래곤 라이딩은 부족한 모습을 보이지만 그 열정을 인정받았다.",
+  "hp": 4,
+  "atk": 4,
+  "cost": 6,
+  "isEffectExist": true,
+  "effectExplain": "$3LP를 지불하여 발동할 수 있다: [이 카드의 체력을 1 올린다.]",
+  "rare": "C"
+}

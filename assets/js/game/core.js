@@ -1,5 +1,5 @@
 window.game = {
-  version: "v0.20.5-Alpha",
+  version: "v0.20.5.1-Alpha",
   masterVolume: 100,
   player: {},
   nowTurn: null,

@@ -1,11 +1,11 @@
 {
   "cardType": "monster",
-  "name": "청등",
-  "monsterType": "고스트",
-  "explain": "푸른 빛을 내는 등이다. 살아있는 것 같다..?",
+  "name": "숙련된 사냥꾼",
+  "monsterType": "사람",
+  "explain": "매우 숙련된 기술을 가지고 있는 사냥꾼이다.",
   "hp": 3,
-  "atk": 1,
-  "cost": 3,
+  "atk": 4,
+  "cost": 5,
   "isEffectExist": false,
   "rare": "C"
 }

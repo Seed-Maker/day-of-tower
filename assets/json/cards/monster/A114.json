@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "전선괴물 일렉트론",
+  "monsterType": "기계",
+  "explain": "온몸에 전기를 두르고 다니는 기계 인간이다. 닿으면 따갑다.",
+  "hp": 5,
+  "atk": 5,
+  "cost": 7,
+  "isEffectExist": true,
+  "effectExplain": "$5LP를 지불하여 발동한다: [상대 필드에서 '기계' 종족 몬스터 한 마리를 선택하여 2의 데미지를 준다.]",
+  "rare": "C"
+}

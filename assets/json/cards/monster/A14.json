@@ -1,8 +1,8 @@
 {
   "cardType": "monster",
-  "name": "대마도사'파스쿠'",
+  "name": "대마도사 '파스쿠'",
   "monsterType": "사람",
-  "explain": "40년 동안 열심히 마법을 연구한 대마도사이다.",
+  "explain": "방대한 세월 동안 열심히 마법을 연구한 대현자이다.",
   "hp": 3,
   "atk": 4,
   "cost": 6,
