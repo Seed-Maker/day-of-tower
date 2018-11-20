@@ -22,7 +22,7 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
 
   for (let i = 0; i < IW; i++) {
     for (let k = 0; k < IH; k++) {
-      const pixel = getPixel(i+1, k+1),
+      const pixel = getPixel(i, k),
             SX = i * QUALITY,
             SY = k * QUALITY;
 

@@ -8,24 +8,6 @@ loading.init().then(async () => {
   let jsList = await loadAssetsList('js');
   let imgList = await loadAssetsList('img');
 
-  for (let i = 1; i <= 6; i++) {
-    imgList.push(`assets/image/duel/dice_face_${i}.png`);
-  }
-
-  if (location.hash.replace('#', '') === 'dev_mode') {
-    // TODO: 개발자모드이므로 로딩속도가 느려질 수 있음을 경고하기.
-    let randKey = String(Math.random()).replace('.', '');
-    [
-      htmlList,
-      cssList, jsList,
-      imgList
-    ].forEach(array => {
-      array.forEach((elem, k) => {
-        array[k] = elem + '?a=' + randKey;
-      });
-    });
-  }
-
   function appendChildInBody(node) {
     document.body.appendChild(node);
   }
@@ -142,7 +124,8 @@ loading.init().then(async () => {
     html: htmlList,
     css: cssList,
     js: jsList,
-    img: imgList
+    img: imgList,
+    promises: [windowLoadPromise]
   });
 
   htmlList.forEach(loadHtmlAndAppend);

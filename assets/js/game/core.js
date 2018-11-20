@@ -1,5 +1,5 @@
-window.game = {
-  version: "v0.20.6.3-Alpha",
+let game = {
+  version: "v0.20.7-Alpha",
   masterVolume: 100,
   player: {},
   nowTurn: null,

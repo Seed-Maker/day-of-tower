@@ -14,7 +14,6 @@ game.Player = class {
     this.deck = player.deck;
     this.hand = new game.Deck;
     this._luckyPoint_ = player.luckyPoint || 10;
-    this.isUseCrystal = false;
   }
 
 

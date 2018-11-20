@@ -1,12 +1,29 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.window.addEventListener = window.addEventListener || function (a, b, c) {
+  b();
+}
+
+function emptyFunction() {
+
+}
+
+var windowLoadPromise = new (
+  window.Promise
+  || emptyFunction
+)(function (resolve) {
+  window.addEventListener('load', resolve, false);
+});
+
+(
+  window.addEventListener
+  || emptyFunction
+)('DOMContentLoaded', function () {
   function notSupport() {
     alert("이 브라우저는 이 게임의 실행을 지원하지 않습니다. 최신 버전의 브라우저로 업데이트 해주십시오.");
   }
 
-  function checkES7() {
-    //ES7 체크.
+  function checkSupport() {
     try {
-      let s = true;
+      var s = true;
       eval('class test {constructor(){} async methodName(){}}');
       ([
         'Promise', 'indexedDB'
@@ -27,12 +44,13 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  async function loadScript() {
-    let script = await ajax.fetch('assets/js/loading.js');
-    runScript(script);
-    script = await ajax.fetch('assets/js/game/init_game.js');
-    runScript(script);
+  function loadScript() {
+    ajax
+    .fetch('assets/js/loading.js')
+    .then(runScript)
+    .then(() => ajax.fetch('assets/js/game/init_game.js'))
+    .then(runScript);
   }
 
-  (checkES7()? loadScript : notSupport)();
+  (checkSupport()? loadScript : notSupport)();
 }, false);

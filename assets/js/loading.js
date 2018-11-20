@@ -2,6 +2,21 @@ window.loading = {
   displayWrapper: document.createElement('div'),
 
   /**
+  *  @method loading.giveParam 캐싱 방지를 위해 주소에 파라미터를 부여
+  *  @param {String} str
+  *  @return {String}
+  */
+  giveParam(str) {
+    if (location.hash.replace('#', '') === 'dev_mode') {
+      let randKey = String(Math.random()).replace('.', '');
+      return `${str}?rand=${randKey}`;
+    } else {
+      let vKey = encodeURIComponent(game.version);
+      return `${str}?vKey=${vKey}`;
+    }
+  },
+
+  /**
   *  @async
   *  @method loading.init 로딩과 관련된 초기화를 진행.
   */
@@ -45,7 +60,7 @@ window.loading = {
   *  @return {Promise} 로딩된 문자열화 된 스타일 시트를 Resolve하는 Promise 객체.
   */
   loadStyle(path = '', noApply) {
-    let promise = ajax.fetch(path);
+    let promise = ajax.fetch(loading.giveParam(path));
     return noApply? promise : promise.then(res => {
       loading.appendStyle(res);
       return Promise.resolve(res);
@@ -60,7 +75,7 @@ window.loading = {
   *  @return {Promise} 로딩된 문자열화 된 JavaScript 코드를 Resolve하는 Promise 객체.
   */
   loadScript(path = '', noApply) {
-    let promise = ajax.fetch(path);
+    let promise = ajax.fetch(loading.giveParam(path));
     return noApply? promise : promise.then(script => {
       try {
         eval(script);
@@ -79,7 +94,9 @@ window.loading = {
   *  @return {Promise} Parse된 HTML 요소들을 Resolve하는 Promise 객체.
   */
   loadHTML(path = '', toArray) {
-    return ajax.fetch(path).then(response => {
+    return ajax.fetch(
+        loading.giveParam(path)
+      ).then(response => {
       let div = document.createElement('div'),
           childs;
       div.innerHTML = response;
@@ -95,7 +112,7 @@ window.loading = {
   *  @return {Promise} Parse된 JSON 객체를 Resolve하는 Promise 객체.
   */
   loadJSON(path = '') {
-    return ajax.fetchJSON(path);
+    return ajax.fetchJSON(loading.giveParam(path));
   },
 
 
@@ -157,6 +174,7 @@ window.loading = {
     }
 
     ctx.fillStyle = LOADING_BAR_COLOR;
+    ctx.clearRect(0, 0, 100**3, 100**3);
 
     displayWrapper.style.display = 'block';
     displayWrapper.style.opacity = 1;
@@ -164,6 +182,7 @@ window.loading = {
     if (assetsList.html)
       forEachFromArr(assetsList.html, src => {
         assetsAmount++;
+        src = loading.giveParam(src);
         prom = prom.then(
           () => ajax.fetch(src).then(endLoad)
         );
@@ -211,8 +230,6 @@ window.loading = {
       });
     }
 
-    ctx.clearRect(0, 0, 100**3, 100**3);
-
     endLoad();
 
     return prom.then(() => {
@@ -234,6 +251,7 @@ window.loading = {
   */
   loadImage(path = '') {
     let img = new Image;
+    path = loading.giveParam(path);
     return new Promise((resolve, reject) => {
       img.src = path;
       img.onerror = () => reject(path);

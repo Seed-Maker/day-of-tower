@@ -15,7 +15,7 @@ game.say = comment => {
     });
     return prom;
   } else {
-    element.innerHTML = String(comment);
+    element.innerHTML = String(comment) + '<div class="apple-safe-area-inset-bottom"></div>';
     return new Promise(resolve => {
       element.onclick = () => {
         element.className = 'close';

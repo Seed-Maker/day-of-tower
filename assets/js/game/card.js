@@ -82,6 +82,7 @@ game.Card = class {
 
     let illustStartX,
         illustStartY,
+        nameTextAlign,
         nameSize,
         nameColor,
         nameX, nameY,
@@ -96,11 +97,12 @@ game.Card = class {
         illustStartY = 120;
         illustWitdth = 359;
         illustHeight = 359;
-        nameX = 120;
+        nameX = cw / 2;
         nameY = 54;
+        nameTextAlign = 'center';
         nameSize = 30;
         nameColor = "black";
-        costX = 230;
+        costX = cw / 2;
         costY = 510;
         coord = [
           illustStartX, illustStartY,
@@ -117,11 +119,12 @@ game.Card = class {
         illustStartY = 18;
         illustWitdth = 359;
         illustHeight = 359;
+        nameTextAlign = 'left';
         nameSize = 27;
         nameColor = this.isEffectExist? "black" : "white";
         nameX = 28;
         nameY = 400;
-        costX = 232;
+        costX = cw / 2;
         costY = 483;
         coord = [
           illustStartX, illustStartY,
@@ -152,6 +155,7 @@ game.Card = class {
     ctx.fillRect(...coord);
     await ctx.drawImageByPixel(illust, ...coord);
 
+    ctx.textAlign = nameTextAlign;
     ctx.fillStyle = nameColor;
     ctx.font = `${nameSize}px Arial`;
     ctx.textBaseline = 'middle';
@@ -168,6 +172,7 @@ game.Card = class {
     }
 
     ctx.fillStyle = "white";
+    ctx.textAlign = "center";
     ctx.font = "33px Arial";
     ctx.fillText(`${this.cost}`, costX, costY);
 

@@ -42,9 +42,9 @@ game.Deck = class {
       const illustSrc = `assets/image/duel/card_illust/${cardPath}.png`;
       const effectSrc = `assets/js/game/card_effect/${cardPath}.js`;
 
-      promises.push(ajax.fetch(cardData));
+      promises.push(loading.loadJSON(cardData));
       promises.push(loading.loadImage(illustSrc));
-      promises.push(ajax.fetch(effectSrc));
+      promises.push(ajax.fetch(loading.giveParam(effectSrc)));
     }
 
     await loading.loadAssets({ promises });
@@ -78,11 +78,12 @@ game.Deck = class {
   *  @return {Number} 덱의 카드 수.
   */
   sort() {
-    let list = this.list;
-    list = list.sort((a,b) => {
-      return a.code.charCodeAt() - b.code.charCodeAt();
+    this.list.sort(function (a, b) {
+      if (a.code < b.code) return -1;
+      if (a.code > b.code) return 1;
+      return 0;
     });
-    return list.length;
+    return this.list.length;
   }
 
 
@@ -119,7 +120,8 @@ game.Deck = class {
         length = list.length,
         cardCount = {};
 
-    if ( 20 > length ) return "덱은 최소 20장 이상으로 구성되어야합니다.";
+    if ( 20 > length )
+      return "덱은 최소 20장 이상으로 구성되어야합니다.";
 
     for (let i = 0; i < length; i++) {
       const code = list[i].code;
@@ -138,5 +140,5 @@ game.Deck = class {
 
 
   get length( ) { return this.list.length; }
-  set length(v) { return this.list.length; }
+  set length(v) { throw new Error("length property is read only."); }
 };
