@@ -1,0 +1,12 @@
+{
+  "cardType": "monster",
+  "name": "기사왕 '마온'",
+  "monsterType": "사람",
+  "explain": "\"내 앞을 막는 자는 누구라도 베겠노라.\"",
+  "hp": 8,
+  "atk": 11,
+  "cost": 35,
+  "isEffectExist": true,
+  "effectExplain": "$지속효과: [이 카드가 상대의 몬스터 카드에게 공격을 받았을 때, 절반의 데미지만 받는다.]",
+  "rare": "U"
+}

@@ -1,5 +1,5 @@
 let game = {
-  version: "v0.20.7-Alpha",
+  version: "v0.20.7.1-Alpha",
   masterVolume: 100,
   player: {},
   nowTurn: null,
