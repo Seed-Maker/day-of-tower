@@ -5,8 +5,10 @@
 */
 game.say = comment => {
   let element = $('#say');
+  const safeArea = '<div class="apple-safe-area-inset-bottom"></div>';
 
   element.className = 'open';
+  element.onclick = null;
 
   if (Array.isArray(comment)) {
     let prom = Promise.resolve();
@@ -15,13 +17,30 @@ game.say = comment => {
     });
     return prom;
   } else {
-    element.innerHTML = String(comment) + '<div class="apple-safe-area-inset-bottom"></div>';
-    return new Promise(resolve => {
+    comment = String(comment);
+    const textAnimePromise = Promise.race([
+      game.textDisplayAnime(comment, comment => {
+        let isResolved = false;
+        textAnimePromise.then(() => isResolved = true);
+        wait(1).then(() => {
+          if (isResolved) return;
+          element.innerHTML = comment + safeArea;
+        });
+      }),
+      new Promise(resolve => {
+        element.onclick = () => {
+          element.innerHTML = comment + safeArea;
+          resolve();
+        };
+      })
+    ]);
+
+    return textAnimePromise.then(() => new Promise(resolve => {
       element.onclick = () => {
         element.className = 'close';
         resolve();
       };
-    });
+    }));
   }
 }
 

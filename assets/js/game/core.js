@@ -1,5 +1,5 @@
-let game = {
-  version: "v0.20.7.1-Alpha",
+const game = {
+  version: "v0.20.8-Alpha",
   masterVolume: 100,
   player: {},
   nowTurn: null,

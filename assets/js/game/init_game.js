@@ -1,12 +1,19 @@
 loading.init().then(async () => {
+  const [
+    htmlList, cssList,
+    jsList, imgList,
+    playerLength
+  ] = await Promise.all([
+    loadAssetsList('html'),
+    loadAssetsList('css'),
+    loadAssetsList('js'),
+    loadAssetsList('img'),
+    ajax.fetchJSON('assets/json/player/length.json'),
+  ]);
+
   function loadAssetsList(s) {
     return ajax.fetchJSON(`assets/json/loading/init/${s}.json`);
   }
-
-  let htmlList = await loadAssetsList('html');
-  let cssList = await loadAssetsList('css');
-  let jsList = await loadAssetsList('js');
-  let imgList = await loadAssetsList('img');
 
   function appendChildInBody(node) {
     document.body.appendChild(node);
@@ -124,6 +131,9 @@ loading.init().then(async () => {
     html: htmlList,
     css: cssList,
     js: jsList,
+    json: Array(playerLength).fill().map((e, i) => `
+      assets/json/player/F${i+1}.json
+    `).map(s => s.trim()),
     img: imgList,
     promises: [windowLoadPromise]
   });

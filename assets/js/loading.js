@@ -8,10 +8,10 @@ window.loading = {
   */
   giveParam(str) {
     if (location.hash.replace('#', '') === 'dev_mode') {
-      let randKey = String(Math.random()).replace('.', '');
+      const randKey = String(Math.random()).replace('.', '');
       return `${str}?rand=${randKey}`;
     } else {
-      let vKey = encodeURIComponent(game.version);
+      const vKey = encodeURIComponent(game.version);
       return `${str}?vKey=${vKey}`;
     }
   },
@@ -47,7 +47,12 @@ window.loading = {
   *  @param {String} [stylesheet] 문자열화된 CSS 코드.
   */
   appendStyle(stylesheet) {
-    let styleTag = document.createElement('style');
+    const styleTag = document.createElement('style');
+
+    if (typeof stylesheet != 'string')
+      throw new TypeError('First argument is not a string.');
+
+    if (!stylesheet.trim()) return;
     styleTag.innerHTML = stylesheet;
     document.head.appendChild(styleTag);
   },
@@ -60,7 +65,7 @@ window.loading = {
   *  @return {Promise} 로딩된 문자열화 된 스타일 시트를 Resolve하는 Promise 객체.
   */
   loadStyle(path = '', noApply) {
-    let promise = ajax.fetch(loading.giveParam(path));
+    const promise = ajax.fetch(loading.giveParam(path));
     return noApply? promise : promise.then(res => {
       loading.appendStyle(res);
       return Promise.resolve(res);
@@ -75,14 +80,16 @@ window.loading = {
   *  @return {Promise} 로딩된 문자열화 된 JavaScript 코드를 Resolve하는 Promise 객체.
   */
   loadScript(path = '', noApply) {
-    let promise = ajax.fetch(loading.giveParam(path));
+    const promise = ajax.fetch(loading.giveParam(path));
     return noApply? promise : promise.then(script => {
+      const resolveProm = Promise.resolve(script);
+      if (!script.trim()) return resolveProm;
       try {
         eval(script);
       } catch (e) {
         console.log(`An error in ${path}\n\n${e}`);
       }
-      return Promise.resolve(script);
+      return resolveProm;
     });
   },
 
@@ -97,8 +104,8 @@ window.loading = {
     return ajax.fetch(
         loading.giveParam(path)
       ).then(response => {
-      let div = document.createElement('div'),
-          childs;
+      const div = document.createElement('div');
+      let childs;
       div.innerHTML = response;
       childs = div.childNodes;
       return toArray? Array.from(childs) : childs;
@@ -250,7 +257,7 @@ window.loading = {
   *  @return {Promise} 로드된 Image 객체를 Resolve하는 Promise 객체.
   */
   loadImage(path = '') {
-    let img = new Image;
+    const img = new Image;
     path = loading.giveParam(path);
     return new Promise((resolve, reject) => {
       img.src = path;

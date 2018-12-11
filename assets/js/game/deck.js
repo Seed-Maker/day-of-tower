@@ -62,7 +62,7 @@ game.Deck = class {
   *  @return {Number} 덱의 카드 수.
   */
   shuffle() {
-    let list = this.list;
+    const list = this.list;
     let i = list.length - 1;
     if (i <= 0) return deck;
     for (; i; i--) {
@@ -92,7 +92,7 @@ game.Deck = class {
   *  @return {game.Card} 뽑은 카드.
   */
   draw() {
-    let card = this.list.pop();
+    const card = this.list.pop();
     game.displayGameData();
     return card;
   }
@@ -115,10 +115,10 @@ game.Deck = class {
   *  @return {String} 유효한 덱이 아닐 경우 그 이유.
   */
   isValid(getReason) {
-    const DECK_LIMIT = 5;
-    let list = this.list,
-        length = list.length,
-        cardCount = {};
+    const DECK_LIMIT = 5,
+          list = this.list,
+          length = list.length,
+          cardCount = {};
 
     if ( 20 > length )
       return "덱은 최소 20장 이상으로 구성되어야합니다.";

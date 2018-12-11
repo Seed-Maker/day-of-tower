@@ -1,5 +1,5 @@
 String.prototype.escapeHTML = function () {
-  let map = {
+  const map = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',

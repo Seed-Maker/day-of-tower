@@ -28,7 +28,7 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
 
       if (!pixel[3]) continue;
 
-      let color = `rgb(${
+      tempCtx.fillStyle = `rgb(${
         pixel[0]
       },${
         pixel[1]
@@ -36,7 +36,6 @@ CanvasRenderingContext2D.prototype.drawImageByPixel = async function (img, ...pa
         pixel[2]
       })`;
 
-      tempCtx.fillStyle = color;
       tempCtx.fillRect(SX, SY, QUALITY, QUALITY);
     }
   }

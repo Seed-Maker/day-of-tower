@@ -1,4 +1,21 @@
 /**
+*  @async
+*  @method game.textDisplayAnime 텍스트 표시함수.
+*  @param {String} text 표시할 텍스트.
+*  @param {Function} handlerFunc 각 프레임별 텍스트를 처리할 함수.
+*/
+game.textDisplayAnime = async (text, handlerFunc) => {
+  text = String(text);
+  const len = text.length + 1
+  for (let i = 0; i < len; i++) {
+    const now = text.slice(0, i + 1);
+    await wait(30);
+    handlerFunc(now);
+    if (text[i + 1] === ' ') i++;
+  }
+}
+
+/**
 *  @method game.displayGameStartLogo 게임 시작 애니메이션을 보여줌.
 *  @return {Promise} 애니메이션 종료시 resolve하는 Promise 객체.
 */

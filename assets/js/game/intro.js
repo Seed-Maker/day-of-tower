@@ -8,12 +8,19 @@ game.introStart = async () => {
   $('#main-display').className = 'close';
 
   document.body.appendChild(await (async () => {
-    const CANVAS_SIZE = 2500;
-    let canvas = document.createElement('canvas');
+    const CANVAS_SIZE = 2500,
+          canvas = document.createElement('canvas');
+
     canvas.width = CANVAS_SIZE;
     canvas.height = CANVAS_SIZE;
-    canvas.style.margin = '3rem auto 0 auto';
-    canvas.style.maxWidth = '80vmin';
+
+    Object.assign(canvas.style, {
+      maxWidth: '80vmin',
+      margin: '3rem auto 0 auto',
+      opacity: 0,
+      transition: 'opacity 1s'
+    });
+
     canvas.getContext('2d').drawImageByPixel(
       await loading.loadImage(
         "assets/image/duel/card_illust/monster/A60.png"
@@ -21,10 +28,15 @@ game.introStart = async () => {
       0, 0,
       CANVAS_SIZE, CANVAS_SIZE
     );
+
+    wait(500).then(() => {
+      canvas.style.opacity = 1;
+    });
+
     return canvas;
   })());
 
-  await wait(750);
+  await wait(1500);
   await game.say([
     '안녕! 친구, 드디어 정신을 차렸구나! ^_^',
     `갑자기 무슨 일인가 싶겠지만 자세한 상황을
